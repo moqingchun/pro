@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "w-swiper":"/components/swiper/wswiper",
+    "w-tab":"/components/w-tab/w-tab",
+    "w-top":"/components/w-top/w-top"
+  },
+  "navigationBarTitleText": "我的干货"
+}

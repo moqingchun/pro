@@ -1,0 +1,261 @@
+$--color-primary: #30a4b1;
+$--color-warning: #f38d1d;
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+
+$color69:#696969;
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-size: 14px;
+	height: 100%;
+}
+.el-cascader{
+	min-width: 300px;
+}
+.bm-view{
+	width: 100%;
+	height: 400px;
+}
+.el-image-viewer__close{
+	color: $--color-primary;
+	top: 64px;
+}
+#baseInfo{
+	.el-input-group__append{
+		color: #fff;
+		border: 1px solid $--color-primary;
+		background: $--color-primary;
+	}
+}
+.el-radio{
+	margin-right: 0;
+}
+.el-tabs--border-card{
+	border: none;
+	box-shadow: none;
+	& > .el-tabs__header{
+		background: transparent;
+		border-bottom: none;
+		.el-tabs__item{
+			margin-top: 0;
+			background: #e8e8e8;
+			border-radius: 4px;
+			& + .el-tabs__item{
+				margin-left: 10px;
+			}
+			&:first-child{
+				margin-left: 0;
+			}
+			&.is-active{
+				color: #303030;
+				font-size: 18px;
+				height: 48px;
+				line-height: 48px;
+				border-top: 4px solid #22b9ca;
+			}
+			&:not(.is-disabled):hover{
+				color:inherit;
+			}
+		}
+	}
+	& >  .el-tabs__content{
+		border: 1px solid #DCDFE6;
+		padding: 46px 26px 60px;
+		height: 258px;
+		box-sizing: border-box;
+	}
+}
+.el-tabs__nav-wrap{
+	margin-bottom: -2px;
+}
+.el-dialog__header {
+	padding: 18px 20px;
+	border-bottom: 1px solid #DCDFE6;
+
+	.el-dialog__title {
+		font-size: 14px;
+		color: $color69;
+		font-weight: bold;
+	}
+
+}
+
+.el-dialog__footer {
+	padding: 14px 20px;
+	background: #efefef;
+}
+
+.el-pagination {
+	text-align: right;
+	font-weight: normal;
+}
+
+.el-pagination.is-background {
+
+	.btn-prev,
+	.btn-next,
+	.el-pager li {
+		background: transparent;
+		border: 1px solid #DCDFE6;
+		border-radius: 6px;
+	}
+
+	.el-pager li:not(.disabled).active {
+		border: 1px solid $--color-primary;
+	}
+}
+
+.el-input__inner {
+	height: 34px;
+	line-height: 34px;
+}
+
+.el-form-item__content {
+	line-height: 34px;
+
+	.el-date-editor {
+
+		.el-range__icon,
+		.el-range-separator {
+			line-height: 27px;
+		}
+	}
+}
+
+.el-form-item__label {
+	line-height: 34px;
+	color: #303030;
+}
+
+.el-button {
+	height: 34px;
+	line-height: 34px;
+	padding: 0 20px;
+
+	&.colButton {
+		background: #ededed;
+		border: 1px solid #ededed;
+		color: inherit;
+	}
+
+	&--primary {
+		background: linear-gradient(to bottom, #1ac5d8, #2ea7b4);
+		border: none;
+	}
+
+	&--warning {
+		background: linear-gradient(to bottom, #fc9e36, #eb7c03);
+		border: none;
+	}
+}
+
+.el-button--text {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.el-table {
+	margin-bottom: 30px;
+
+	th.is-leaf {
+		border-top: 1px solid #EBEEF5;
+		background: #f2f2f2;
+		color: #303030;
+	}
+
+	th,
+	td {
+		padding: 9px 0;
+	}
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+	background-color: #eef8fc;
+}
+
+.com_title {
+	height: 68px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.el-form-item {
+		margin-bottom: 0;
+	}
+
+	p {
+		color: #303030;
+		font-size: 24px;
+	}
+}
+
+.com_main {
+	padding: 28px 20px;
+	background: #fff;
+	border-radius: 4px;
+
+	.el-form-item {
+		margin-bottom: 14px;
+
+		.el-radio-button__inner {
+			border: none;
+			padding: 5px 12px;
+			border-radius: 12px;
+		}
+
+		.el-checkbox-button__inner {
+			border: none;
+			padding: 5px 12px;
+			border-radius: 12px;
+		}
+	}
+}
+.com_main1{
+	padding: 0px 60px 100px;
+	background: #fff;
+	border-radius: 4px;
+	.title{
+		padding: 49px 0 23px 12px;
+		font-size: 16px;
+		color: #303030;
+		font-weight: bold;
+		position: relative;
+		&::before{
+			content: '';
+			width: 4px;
+			height: 14px;
+			background: $--color-primary;
+			position: absolute;
+			top: 53px;
+			left: 0;
+		}
+	}
+	.body{
+		padding-left: 12px;
+		width: 65%;
+		box-sizing: border-box;
+		.inlinerow{
+			.el-form-item{
+				margin-right: 40px;
+				label{
+					white-space: nowrap;
+				}
+				p{
+					white-space: nowrap;
+					color: $color69;
+				}
+			}
+		}
+	}
+	.body_special{
+		display: flex;
+		.body{
+			margin-right: 86px;
+		}
+	}
+}

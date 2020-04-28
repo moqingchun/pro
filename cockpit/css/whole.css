@@ -1,0 +1,535 @@
+html,
+body,
+.home,
+.extensionBase,
+.container {
+	height: 100%;
+	width: 100%;
+}
+.oInfo{
+	display: none;
+}
+/* home.html开始 */
+.home {
+	position: relative;
+	background-color: #0a0b10;
+}
+
+.kaiqi {
+	cursor: pointer;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.kaiqi .icon-kaiqi {
+	line-height: 80px;
+	font-size: 30px;
+	color: #FFFFFF;
+	display: none;
+}
+
+.home .left {
+	left: 55px;
+	position: absolute;
+	bottom: 366px;
+}
+.home .left .oList {
+	margin-right: 20px;
+}
+.home .left .bj {
+	margin-top: 26px;
+	text-align: center;
+	width: 193px;
+	height: 61px;
+	background: url(../img/leftbj.png) no-repeat;
+	cursor: pointer;
+}
+
+.home .left .bj span {
+	line-height: 61px;
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+.home .left .bj a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.home .theServer {
+	position: absolute;
+	left: 55px;
+	bottom: 275px;
+	/* width: 565px;
+	height: 49px; */
+	width: 284px;
+	height: 40px;
+	background: url(../img/theServer.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.home .theServer>div {
+	color: #65c6e7;
+	font-size: 14px;
+	line-height: 49px;
+}
+
+.home .theServer>div span:first-of-type,
+.serverSpot .mapIcon {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	margin-right: 14px;
+}
+
+.home .theServer .onLine span:first-of-type,
+.onLine .mapIcon {
+	background-color: #04ba19;
+}
+
+.home .theServer .abnormal span:first-of-type,
+.abnormal .mapIcon {
+	background-color: #e60012;
+}
+
+.home .theServer .offline span:first-of-type,
+.offline .mapIcon {
+	background-color: #a0a0a0;
+}
+
+.home .upload,
+.dataUpload .mapIcon {
+	border-radius: 50%;
+	background-color: #04ba19;
+	margin-right: 14px;
+	display: flex;
+}
+
+.home .theServer>div:last-of-type span:first-of-type {
+	white-space: nowrap;
+	width: inherit;
+	height: inherit;
+	margin-right: 0;
+}
+
+
+@keyframes scale {
+	0% {
+		transform: scale(1);
+	}
+
+	50%,
+	75% {
+		transform: scale(2.5);
+	}
+
+	78%,
+	100% {
+		opacity: 0;
+	}
+}
+
+.home .upload:before,
+.dataUpload .mapIcon:before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	/* background-color: #074c2a; */
+	background-color: #FFFFFF;
+	opacity: 0.7;
+	animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
+	animation-delay: 200ms;
+	transition: 0.5s all ease;
+	transform: scale(1);
+}
+
+.home .theServer>div span:last-of-type {
+	padding-left: 4px;
+}
+
+/* 服务器原点 */
+.onLine {
+	text-align: center;
+}
+
+.serverSpot .mapIcon {
+	margin: auto;
+}
+
+.serverSpot .mapName {
+	white-space: nowrap;
+	color: #65656e;
+}
+
+.home .category {
+	position: absolute;
+	right: 55px;
+	bottom: 263px;
+	width: 628px;
+	height: 74px;
+}
+
+.home .category>div {
+	color: #70a4e9;
+	width: 200px;
+	height: 100%;
+	background: url(../img/category.png) no-repeat;
+	position: relative;
+	padding-top: 8px;
+	cursor: pointer;
+}
+
+.home .category .active {
+	color: #00ffff;
+	background: url(../img/category-home.png) no-repeat;
+}
+
+.home .category>div i {
+	font-size: 30px;
+	padding: 0 10px 0 20px;
+
+}
+
+.home .category>div span:first-of-type {
+	font-size: 35px;
+	font-family: "Arial", "Helvetica", "sans-serif";
+}
+
+.home .category>div span:last-of-type {
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	font-size: 14px;
+}
+
+
+
+/* home.html结束 */
+
+
+
+/* extensionBase外延基地开始 */
+
+.extensionBase {
+	position: relative;
+	overflow: hidden;
+}
+
+.extensionBase .dataContent h3 {
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 190px;
+	font-size: 32px;
+	font-weight: normal;
+	color: #00e4ff;
+	text-align: center;
+}
+
+.extensionBase .varieties {
+	width: 109px;
+	background: url(../img/extensionBase-left.png) no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+}
+
+.extensionBase .varieties li {
+	text-align: center;
+	width: 100px;
+	height: 142px;
+	cursor: pointer;
+}
+
+.extensionBase .varieties .active {
+	background-color: rgba(24, 155, 156, .2);
+}
+
+.extensionBase .varieties li img {
+	width: 72px;
+	height: 72px;
+	margin: 15px 0 10px;
+}
+
+.extensionBase .varieties li span {
+	font-size: 14px;
+	color: #FFFFFF;
+	display: block;
+}
+
+/* 图标开始 */
+.trendBase {
+	width: 488px;
+	position: absolute;
+	top: 174px;
+	right: 56px;
+}
+
+.formatter {
+	background-color: #2e9b9f;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.formatter .xian {
+	padding: 0 5px;
+}
+
+.j_titlew {
+	display: flex;
+	margin-bottom: 12px;
+}
+
+.j_triangle {
+	width: 0;
+	height: 0;
+	border-right: 16px solid #102642;
+	border-top: 21px solid transparent;
+	border-bottom: 21px solid transparent;
+}
+
+.j_title {
+	flex: 1;
+	line-height: 42px;
+	text-indent: 8px;
+	color: #0efcff;
+	font-size: 18px;
+	background: linear-gradient(to right, #102642, transparent);
+}
+
+.j_pictable {
+	height: 172px;
+	border: 1px solid #6076ad;
+	margin-bottom: 12px;
+	position: relative;
+	background: rgba(11, 21, 44, .5);
+}
+
+.j_border {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+}
+
+.j_btl {
+	top: -2px;
+	left: -2px;
+	border-top: 2px solid #0efcff;
+	border-left: 2px solid #0efcff;
+}
+
+.j_btr {
+	top: -2px;
+	right: -2px;
+	border-top: 2px solid #0efcff;
+	border-right: 2px solid #0efcff;
+}
+
+.j_bbl {
+	bottom: -2px;
+	left: -2px;
+	border-bottom: 2px solid #0efcff;
+	border-left: 2px solid #0efcff;
+}
+
+.j_bbr {
+	bottom: -2px;
+	right: -2px;
+	border-bottom: 2px solid #0efcff;
+	border-right: 2px solid #0efcff;
+}
+
+.numberTrend,
+.priceTrend {
+	width: 100%;
+	height: 170px;
+}
+
+.base {
+	height: 322px;
+}
+
+.base .title {
+	width: 100%;
+	height: 39px;
+	line-height: 39px;
+	margin-bottom: 5px;
+	background: rgba(21, 47, 91, .4);
+}
+
+.base .title li {
+	font-size: 15px;
+	color: #0bb4b6;
+}
+
+.base .title li,
+.base .baseDetails li span {
+	text-align: center;
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+.base .baseDetails {
+	height: 280px;
+	overflow: hidden;
+}
+
+.base .baseDetails li {
+	font-size: 15px;
+	color: #ffffff;
+	line-height: 33px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+}
+
+/* 图标结束 */
+/* extensionBase外延基地结束 */
+
+
+/* 食品安全信用 */
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* 数据容量 */
+.allClass {
+	text-align: left;
+	padding: 20px 0;
+	font-size: 28px;
+}
+
+.allClass span {
+	font-size: 18px;
+}
+
+.inrow {
+	text-align: left;
+}
+
+.dataNums .dataOne {
+	width: 52px;
+	height: 64px;
+}
+
+.dataNums .tt span {
+	font: bold 50px/64px "j_font";
+}
+
+.totalCapacity {
+	width: initial;
+	height: initial;
+	position: absolute;
+	bottom: 645px;
+	left: 55px;
+}
+
+/* 外延基地 */
+.homeRanking {
+	position: absolute;
+	top: 120px;
+	right: 0px;
+}
+.baseRanking {
+	position: absolute;
+	bottom: 170px;
+	left: 115px;
+}
+
+.baseRankingtt {
+	height: 40px;
+	line-height: 40px;
+	padding-left: 12px;
+	color: #9ae0ff;
+	font-size: 18px;
+}
+
+.creditScoreRanking li {
+	height: 40px;
+	line-height: 40px;
+	cursor: pointer;
+	color: #fff;
+}
+
+.creditScoreRanking .num {
+	width: 50px;
+	text-align: center;
+	font-size: 12px;
+	background: url(../img/top.png) center/contain no-repeat;
+	color: #fff !important;
+}
+
+.creditScoreRanking .num.num1 {
+	background: url(../img/top1.png) center/contain no-repeat;
+}
+
+.creditScoreRanking .num.num2 {
+	background: url(../img/top2.png) center/contain no-repeat;
+}
+
+.creditScoreRanking .num.num3 {
+	background: url(../img/top3.png) center/contain no-repeat;
+}
+
+.creditScoreRanking li>div,
+.j_trace li>div {
+	float: left;
+}
+
+.creditScoreRanking li>div.score {
+	float: right;
+	font-family: "j_font";
+}
+
+/* 外延基地总数 */
+.baseTotal {
+	width: 1224px;
+	position: absolute;
+	bottom: 52px;
+	left: 126px;
+}
+
+.baseTotal .j_pictable {
+	margin-bottom: 0px;
+	height: 102px;
+}
+
+.baseTotal .title ul li {
+	width: 100%;
+	height: 43px;
+	line-height: 43px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.baseTotal .title ul li:first-of-type {
+	background: rgba(21, 47, 91, .4);
+}
+
+.baseTotal .title ul li span {
+	display: block;
+	-webkit-flex: 1;
+	flex: 1;
+	color: #ffffff;
+	font-size: 20px;
+}
+
+.baseTotal .title ul li:last-of-type span {
+	color: #0efcff;
+}

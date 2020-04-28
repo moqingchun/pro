@@ -1,0 +1,1186 @@
+/*驾驶舱css*/
+.block-chain-content {
+    height: 100%;
+}
+
+
+.bot-popup {
+    padding: 10px;
+}
+
+.bot-popup-a {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    color: #282828;
+    font-size: 14px;
+}
+
+.bot-popup-a:hover {
+    background: #f6f6f6;
+}
+
+.bot-popup-a h6 {
+    font-weight: 500;
+}
+
+.bot-popup-a span {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.top-popup > span {
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #efefef;
+    overflow: hidden;
+    position: relative
+}
+
+.top-popup > span img {
+    width: 100%;
+}
+
+.top-popup h5 {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.select {
+    position: relative;
+    top: 50%;
+    transform: translateY(-15px);
+    display: inline-block;
+    margin: 0 auto;
+    width: 200px;
+    color: #cccccc;
+    vertical-align: middle;
+    text-align: left;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.select .coral-textbox-default {
+    color: #fff;
+}
+
+.select .placeholder .coral-textbox-border {
+    position: relative;
+    display: block;
+    background-color: #262a2b;
+    z-index: 1;
+    /*line-height: 30px;*/
+    border-radius: 3px;
+    cursor: pointer;
+    /*padding: 0 12px;*/
+    color: #05cae3;
+    border: 0;
+}
+
+.select .placeholder .coral-combo-arrow {
+    color: #fff;
+}
+
+.is-open .placeholder {
+    border-bottom: 1px solid #1a1d1e;
+    border-radius: 3px 3px 0 0;
+}
+
+.select .placeholder:hover {
+    background: #34383c;
+}
+
+/*.select .placeholder:after {*/
+/*content: "";*/
+/*width: 0;*/
+/*height: 0;*/
+/*border-width: 6px 6px 0;*/
+/*border-color: #000 transparent transparent;*/
+/*border-style: solid;*/
+/*position: absolute;*/
+/*top: 0;*/
+/*bottom: 0;*/
+/*margin: auto;*/
+/*right: 12px;*/
+/*}*/
+
+.select.is-open ul {
+    display: block;
+}
+
+.select.select--white .placeholder {
+    background: #fff;
+    color: #999;
+}
+
+.select.select--white .placeholder:hover {
+    background: #fafafa;
+}
+
+.select ul {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    background: #262a2b;
+    border-radius: 0 0 3px 3px;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    z-index: 100;
+}
+
+.select ul li {
+    display: block;
+    text-align: left;
+    line-height: 30px;
+    padding: 0 12px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #1a1d1e;
+    position: relative;
+}
+
+.select ul li:last-child {
+    border-bottom: 0;
+}
+
+.select ul li:hover {
+    background: #34383c;
+    color: #05cae3;
+}
+
+.cockpit-main {
+	width: 100%;
+    height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.cockpit-bar-t {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28%;
+    height: 36%;
+    padding-top: 30px;
+    z-index: 2;
+}
+@media screen and (max-width: 1900px) {
+    body {
+        background-color:lightblue;
+    }
+}
+
+.cockpit-list {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    /*height: 48%;*/
+    overflow: hidden;
+    z-index: 2;
+}
+
+.cockpit-bar-b {
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+    width: 28%;
+    height: 42%;
+    padding-top: 30px;
+    z-index: 2;
+}
+
+.cockpit-pie {
+    position: absolute;
+    right: 45px;
+    bottom: 0px;
+    width: 280px;
+    height: 280px;
+    z-index: 2;
+}
+.coral-dialog .coral-dialog-buttonpane .dialog-close {
+    background: #373d41;
+}
+
+.coral-dialog .coral-dialog-buttonpane .dialog-preservation {
+    background: #1190ef;
+    color: #fff;
+}
+.cockpit-foot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+}
+
+.bar-txt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 迷你简菱心;
+    text-align: center;
+}
+
+.max-font {
+    font-size: 20px;
+}
+
+#transaction {
+    color: #dabb02;
+}
+
+.cockpit-bar-b .bar-txt {
+    bottom: auto;
+    top: 0;
+    text-align: center;
+}
+
+#transactionHeight {
+    color: #08dcf6;
+}
+
+.cockpit-list .left-list {
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding-right: 20px;
+    padding-top: 30px;
+    position: relative;
+}
+
+.cockpit-list .right-list {
+    float: left;
+    width: 50%;
+    padding-top: 30px;
+    height: 100%;
+    position: relative;
+}
+
+.cockpit-list ul {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cockpit-list li {
+    line-height: 30px;
+    color: #9fabb9;
+    display: flex;
+    border-bottom: 1px solid rgba(181, 181, 181, 0.24);
+    position: relative;
+    padding-left: 10px;
+}
+
+.cockpit-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.cockpit-list .serial_number {
+    flex: 2;
+}
+
+.cockpit-list .list_name {
+    flex: 8;
+}
+
+.cockpit-list .list_number {
+    flex: 3;
+}
+
+.cockpit-list h4 {
+    font-size: 15px;
+    line-height: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.rise {
+    width: 10px;
+    height: 13px;
+    display: inline-block;
+    background: url(../img/blockchain/arrow-t.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin: auto;
+}
+
+.decline {
+    width: 10px;
+    height: 13px;
+    display: inline-block;
+    background: url(../img/blockchain/arrow-b.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    margin: auto;
+}
+
+.cockpit-list li span {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cockpit-foot-l span {
+    display: inline-block;
+    color: #fff;
+    height: 32px;
+    overflow: hidden;
+    background: url(../img/blockchain/header-button-r.png) no-repeat;
+    background-size: 100% 100%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cockpit-foot-l i {
+    display: inline-block;
+    float: left;
+    margin: 0 10px;
+}
+
+.cockpit-foot-l text {
+    display: inline-block;
+    line-height: 26px;
+    font-size: 14px;
+}
+.coral-grid .coral-grid-htable th div{
+    font-size: 15px;
+}
+.cockpit-foot-l img {
+    display: block;
+    border: 0;
+    height: 32px;
+}
+
+.cockpit-foot {
+    overflow: hidden;
+}
+
+.cockpit-foot-l {
+    float: left;
+    margin-top: 5px;
+    position: absolute;
+    z-index: 2;
+}
+.btnShow{
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:65px;
+    margin: auto;
+    text-align: center;
+    height: 50px;
+    /*background-color: red;*/
+}
+.btnShow img{
+
+    width: 185px;
+    height: 65px;
+    cursor:pointer;
+}
+#showDataPlatform{
+    text-decoration:none;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+}
+.cockpit-foot-c {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.cockpit-foot-main {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.cockpit-foot-content {
+    float: left;
+    color: #65c6e7;
+    padding: 5px;
+    border: 1px solid #65c6e7;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 0 2px;
+}
+
+.cockpit-foot-content dl {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.cockpit-foot-content dt, .cockpit-foot-content dd {
+    float: left;
+}
+
+.cockpit-foot-content dt {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-right: 10px;
+}
+
+.cockpit-foot-content dd i {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.cockpit-foot-content dd span {
+    margin: 0 3px;
+}
+
+.cockpit-foot-content dd {
+    position: relative;
+    padding-left: 10px;
+}
+
+.cockpit-foot-margin {
+    margin: 0 10px;
+}
+
+.yellow-i {
+    background: #e6e900;
+}
+
+.red-i {
+    background: #e84b44;
+}
+
+.blue-i {
+    background: #00eaff;
+}
+
+.white-i {
+    background: #ffffff;
+}
+
+.gray-i {
+    background: #b6b6b6;
+}
+
+.drawArea-main {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.drawArea-items span {
+    display: block;
+}
+
+.drawArea-items {
+    position: absolute;
+}
+
+drawArea-item {
+    position: relative;
+}
+
+.drawArea-item .cube-1 {
+    width: 52px;
+    height: 51px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+}
+
+.drawArea-item .cube-1-t {
+    width: 28px;
+    height: 32px;
+    background: url(../img/blockchain/cube1.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 4;
+}
+
+.drawArea-anmition .drawArea-item .cube-1-t {
+    animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-items3.drawArea-anmition .drawArea-item .cube-1-t {
+    animation: bounce 1.4s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-items6.drawArea-anmition .drawArea-item .cube-1-t {
+    animation: bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-anmition .drawArea-far.drawArea-item .cube-1-t {
+    animation: bounce 1.7s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-anmition .drawArea-in.drawArea-item .cube-1-t {
+    animation: bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-anmition .drawArea-item .cube-1-c {
+    animation: bounce1 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) infinite;
+}
+
+.drawArea-item .cube-1-c {
+    width: 44px;
+    height: 25px;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 3;
+    background: url(../img/blockchain/cube1-min-y.png) no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+.drawArea-item .cube-1-b {
+    width: 44px;
+    height: 25px;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 2;
+    /* background: url(../img/blockchain/spherical.png) no-repeat;
+    background-size: 100% 100%; */
+}
+
+.drawArea-item .cube-2 {
+    width: 124px;
+    height: 60px;
+    background: url(../img/blockchain/cube2.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 6px;
+    left: -32px;
+    z-index: 1;
+    /*animation: ripple1 1s infinite;*/
+    transition: all 0.5s;
+    opacity: 0.8;
+}
+
+.drawArea-item .cube-3 {
+    width: 103px;
+    height: 57px;
+    background: url(../img/blockchain/cube3.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 8px;
+    left: -22px;
+    z-index: 2;
+    /*animation: ripple2 1s infinite;*/
+    transition: all 0.8s;
+
+}
+
+.drawArea-item .cube-4 {
+    width: 68px;
+    height: 33px;
+    background: url(../img/blockchain/cube4.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 20px;
+    left: -6px;
+    z-index: 3;
+    transition: all 1s;
+
+}
+
+.drawArea-anmition .cube-2, .drawArea-anmition .ball-2 {
+    /*animation: ripple1 1s infinite;*/
+    opacity: 0;
+    -webkit-animation: warn2 1.4s ease-out;
+    -moz-animation: warn2 1.4s ease-out;
+    animation: warn2 1.4s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.drawArea-anmition .cube-3, .drawArea-anmition .ball-3 {
+    /*animation: ripple1 1.5s infinite;*/
+    opacity: 0;
+    -webkit-animation: warn1 1.4s ease-out;
+    -moz-animation: warn1 1.4s ease-out;
+    animation: warn1 1.4s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.drawArea-anmition .cube-4, .drawArea-anmition .ball-4 {
+    /*animation: ripple3 1.5s infinite;*/
+    opacity: 0;
+    -webkit-animation: warn 1.4s ease-out;
+    -moz-animation: warn 1.4s ease-out;
+    animation: warn 1.4s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.drawArea-item .ball-1 {
+    width: 68px;
+    height: 69px;
+    background: url(../img/blockchain/ball1.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.drawArea-item .ball-2 {
+    width: 91px;
+    height: 49px;
+    background: url(../img/blockchain/ball2.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 28px;
+    left: -12px;
+    z-index: 3;
+    transition: all 0.5s;
+}
+
+.drawArea-item .ball-3 {
+    width: 77px;
+    height: 48px;
+    background: url(../img/blockchain/ball3.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 28px;
+    left: -6px;
+    z-index: 2;
+    transition: all 0.8s;
+}
+
+.drawArea-item .ball-4 {
+    width: 45px;
+    height: 24px;
+    background: url(../img/blockchain/ball4.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    z-index: 1;
+    transition: all 1s;
+}
+
+.drawArea-opacity {
+    opacity: 0.5;
+}
+
+/*@keyframes ripple1 {*/
+/*0% {*/
+/*opacity: 0;*/
+/*transform: scale(0.2);*/
+/*}*/
+/*50% {*/
+/*opacity: 0.8;*/
+/*transform: scale(1);*/
+/*}*/
+/*100%{*/
+/*opacity: 0;*/
+/*}*/
+/*}*/
+/*!*@keyframes ripple2 {*!*/
+/*!*0% {*!*/
+/*!*opacity: 0;*!*/
+/*!*transform: scale(0.2);*!*/
+/*!*}*!*/
+/*!*100% {*!*/
+/*!*opacity: 1;*!*/
+/*!*transform: scale(1);*!*/
+/*!*}*!*/
+/*!*}*!*/
+/*@keyframes ripple3 {*/
+/*0% {*/
+/*opacity: 0;*/
+/*transform: scale(0.5);*/
+/*}*/
+/*50% {*/
+/*opacity: 1;*/
+/*transform: scale(1);*/
+/*}*/
+/*100%{*/
+/*opacity: 0;*/
+/*}*/
+/*}*/
+@keyframes warn {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.0;
+    }
+
+    25% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@keyframes warn1 {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.0;
+    }
+
+    25% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@keyframes warn2 {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.0;
+    }
+
+    25% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 0.3;
+    }
+
+    75% {
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 0.0;
+    }
+}
+
+@keyframes bounce {
+    from, to {
+        transform: translateY(5px);
+    }
+    80% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce1 {
+    from, to {
+        /*transform: scale(1);*/
+        background: url(../img/blockchain/cube1-max-y.png) no-repeat;
+
+    }
+    80% {
+        /*transform: scale(0.8);*/
+        background: url(../img/blockchain/cube1-min-y.png) no-repeat;
+        opacity: 0.6;
+
+    }
+}
+
+.cube-txt, .ball-txt {
+    font-size: 12px;
+    color: #65c6e7;
+    margin-left: 80%;
+    padding: 5px 10px;
+    width: 150%;
+    cursor: pointer;
+    position: absolute;
+    /*z-index: 20;*/
+}
+
+.cube-txt span, .ball-txt span {
+    display: block;
+    /*white-space: nowrap;*/
+}
+
+/*远*/
+.drawArea-far {
+    transform: scale(0.5);
+}
+
+/*中*/
+.drawArea-in {
+    transform: scale(0.8);
+}
+
+/*近*/
+.drawArea-near {
+    transform: scale(1);
+}
+
+/*颜色区分*/
+/*已同步*/
+.sync {
+    color: #00eaff;
+}
+
+/*同步*/
+.synchronization {
+    color: #e6e900
+}
+
+/*异常*/
+.abnormal {
+    color: #e84b44
+}
+
+/*异常-球*/
+.abnormal-ball {
+    color: #b6b6b6
+}
+
+/*立方体*/
+.drawArea-items1 {
+    top: 9%;
+    left: 46%;
+}
+
+.drawArea-items2 {
+    top: 32%;
+    left: 57%;
+}
+
+.drawArea-items3 {
+    top: 24%;
+    left: 46%;
+}
+
+.drawArea-items4 {
+    top: 30%;
+    left: 31%;
+}
+
+.drawArea-items5 {
+    top: 14%;
+    left: 37%;
+}
+
+.drawArea-items6 {
+
+    top: 10%;
+    left: 24%;
+}
+
+.drawArea-items7 {
+
+    top: 45%;
+    left: 25%;
+}
+
+.drawArea-items8 {
+    top: 30%;
+    left: 27%;
+}
+
+.drawArea-items9 {
+
+    top: 30%;
+    left: 18%;
+}
+
+.drawArea-items10 {
+    top: 50%;
+    left: 15%;
+}
+
+.drawArea-items11 {
+    top: 22%;
+    left: 12%;
+}
+
+.drawArea-items12 {
+
+    top: 15%;
+    left: 20%;
+}
+
+.drawArea-items13 {
+    top: 9%;
+    left: 23%;
+}
+
+.drawArea-items14 {
+    top: 15%;
+    left: 28%;
+}
+
+.drawArea-items15 {
+    top: 5%;
+    left: 25%;
+}
+
+.drawArea-items16 {
+
+    top: 10%;
+    left: 32%;
+}
+
+.drawArea-items17 {
+    top: 2%;
+    left: 33%;
+}
+
+.drawArea-items18 {
+
+    top: 0%;
+    left: 38%;
+}
+
+.drawArea-items19 {
+    top: 0%;
+    left: 43%;
+}
+
+.drawArea-items20 {
+
+    top: 8%;
+    left: 40%;
+}
+
+.drawArea-items21 {
+    top: 5%;
+    left: 46%;
+}
+
+.drawArea-items22 {
+
+    top: 0%;
+    left: 52%;
+}
+
+/*圆*/
+.drawArea-items-ball1 {
+    top: 25%;
+    left: 65%;
+}
+
+.drawArea-items-ball2 {
+    top: 13%;
+    left: 59%;
+}
+
+.drawArea-items-ball3 {
+    top: 5%;
+    left: 52%;
+}
+
+.drawArea-items-ball4 {
+    top: 8%;
+    left: 65%;
+}
+
+.drawArea-items-ball5 {
+    top: 20%;
+    left: 75%;
+}
+
+.drawArea-items-ball6 {
+    top: 11%;
+    left: 75%;
+}
+
+.drawArea-items-ball7 {
+    top: 5%;
+    left: 60%;
+}
+
+.drawArea-items-ball8 {
+    top: 13%;
+    left: 70%;
+}
+
+.drawArea-items {
+    width: 60px;
+    height: 40px;
+}
+
+svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.drawArea-hover {
+    background: rgba(28, 28, 28, 1);
+    border-radius: 10px;
+}
+
+.cube-txt .drawarea-name, .ball-txt .drawarea-name {
+    white-space: normal;
+    font-size: 16px;
+}
+
+.drawArea-items-ball .drawArea-near {
+    margin-top: -24px;
+}
+
+.drawArea-items-ball .drawArea-in {
+    margin-top: -12px;
+}
+
+.dialog-itme {
+    padding: 10px 0;
+    text-align: left;
+}
+
+.dialog-itmes {
+    display: inline-block;
+    /*display: none;*/
+}
+
+.dialog-main {
+    text-align: center;
+    display: none;
+}
+
+.coral-dialog .coral-dialog-buttonpane {
+    padding: 0px 0;
+    background: #f7f8fb;
+    border-top: 1px dashed #e4e4e4;
+}
+
+.dialog-itme .maxWidthLabel {
+    min-width: 130px;
+}
+
+.dialog-itme label {
+    margin-right: 20px;
+    min-width: 70px;
+    text-align: right;
+    margin-bottom: 0;
+    line-height: 30px;
+    float: left;
+}
+
+.coral-dialog-toolbar {
+    top: 0;
+}
+
+@media only screen and (max-width: 1400px) {
+    .cockpit-pie {
+        transform: scale(0.7);
+        bottom: -50px
+    }
+
+    .cockpit-list li {
+        line-height: 24px;
+    }
+}
+
+@media only screen and (max-height: 900px) {
+    .cockpit-pie {
+        transform: scale(0.7);
+        bottom: -50px
+    }
+
+    .cockpit-list li {
+        line-height: 24px;
+    }
+}
+.drawarea-static{
+    display: block!important;
+}
+.static-txt{
+    display: block!important;
+    /*background: rgba(28, 28, 28, 1);*/
+    border-radius: 10px;
+}

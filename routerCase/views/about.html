@@ -1,0 +1,16 @@
+<div class="main ">
+	关于
+</div>
+<script src="include.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('.main').append('<p>我们</p>')
+	$.ajax({
+		url:'baidu.com',
+		success:function(res){
+			console.log('成功')
+		},
+		err:function(res){
+			console.log('失败')
+		}
+	})
+</script>

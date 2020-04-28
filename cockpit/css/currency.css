@@ -1,0 +1,605 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+body {
+	font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.spaceBetween {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+.spaceAround {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+}
+
+.alignCenter {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+/* 柱的信息窗口 */
+.markerColumn {
+	width: 65px;
+	height: 100px;
+}
+
+.custom-content-marker .mapText {
+	position: absolute;
+	width: 206px;
+	height: 90px;
+	top: -64px;
+	z-index: 999;
+	overflow: hidden;
+}
+
+.homeInfo .mapText {
+	position: relative;
+	top: -80px;
+}
+
+.custom-content-marker .mapText .textColumn,
+.homeInfo .mapText .textColumn {
+	position: absolute;
+	background: url(../img/mapText.png) no-repeat;
+	width: 206px;
+	height: 60px;
+	left: -206px;
+}
+
+.homeInfo .mapText .textColumn {
+	left: 18px;
+}
+
+.custom-content-marker .mapText .textColumn p,
+.homeInfo .mapText .textColumn p {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 90%;
+	font-size: 14px;
+	color: #FFFFFF;
+	line-height: 14px;
+	padding-left: 66px;
+}
+
+.custom-content-marker .mapText .textColumn .lineHeight {
+	line-height: 54px;
+}
+
+.custom-content-marker .mapText .textColumn .nbr {
+	display: block;
+	margin-top: 12px;
+}
+
+.custom-content-marker .mapText .textColumn p span {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.custom-content-marker .mapText .textColumn p span:hover {
+	overflow: initial;
+}
+
+.custom-content-marker .mapText .textColumn p span:last-of-type {
+	font-size: 16px;
+}
+
+.custom-content-marker .mapText .jianColumn {
+	position: absolute;
+	bottom: -33px;
+	left: 35px;
+}
+
+.homeInfo .mapText .jianColumn {
+	position: absolute;
+	top: 56px;
+	left: 22px;
+}
+
+.custom-content-marker .textKeyframe .textColumn {
+	animation: textColumn1 0.5s ease 1s forwards;
+}
+
+.custom-content-marker .textKeyframe .jianColumn {
+	animation: jianColumn1 0.5s ease 1s forwards;
+}
+
+.addMarker {
+	position: absolute;
+	top: -59px;
+	left: -8px;
+}
+
+.addMarker .mapName span {
+	color: #c1c3c5;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.homeInfo .infoSpan1 {
+	display: block;
+	margin-top: 14px;
+}
+
+.addMarker .mapIcon {
+	height: 42px;
+}
+
+.addMarker .mapIcon span {
+	color: #c1c3c5;
+	position: absolute;
+	left: 6px;
+	right: 0;
+	top: 28px;
+	margin-right: 4px;
+}
+
+@keyframes jianColumn1 {
+	0% {
+		bottom: -33px;
+		opacity: 0;
+	}
+
+	100% {
+		bottom: 0px;
+		opacity: 1;
+	}
+}
+
+@keyframes textColumn1 {
+	0% {
+		left: -206px;
+		opacity: 0;
+	}
+
+	100% {
+		left: 0px;
+		opacity: 1;
+	}
+}
+
+@keyframes jianColumn2 {
+	0% {
+		top: 105px;
+		opacity: 0;
+	}
+
+	100% {
+		top: 77px;
+		opacity: 1;
+	}
+}
+
+@keyframes textColumn2 {
+	0% {
+		left: -262px;
+		opacity: 0;
+	}
+
+	100% {
+		left: 0px;
+		opacity: 1;
+	}
+}
+
+.custom-content-marker {
+	position: relative;
+	width: 25px;
+	height: 34px;
+}
+
+.shangChao {
+	width: 262px;
+	height: 75px;
+	margin-top: -43px;
+}
+
+.shangChao .textColumn {
+	animation: textColumn2 0.5s ease 1s forwards;
+}
+
+.shangChao .mapText {
+	overflow: hidden;
+	width: 100%;
+	height: 104px;
+	position: absolute;
+	top: 0px;
+}
+
+.shangChao .mapText .textColumn p {
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+.shangChao .mapText .textColumn p span:first-child {
+	margin-top: 5px;
+}
+
+.shangChao .mapText .textColumn p span:first-child,
+.shangChao .mapText .textColumn p span:nth-child(2) {
+	display: block;
+}
+
+.shangChao .mapText .jianColumn {
+	animation: jianColumn2 0.5s ease 1s forwards;
+	left: 50px;
+	position: absolute;
+	top: 105px;
+}
+
+.shangChao .mapText .textColumn,
+.shangChao .mapText .textColumn p {
+	width: 182px;
+	background: url(../img/mapText3.png) no-repeat;
+	position: absolute;
+	left: -262px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.shangChao .mapText .textColumn {
+	height: 76px;
+	width: 100%;
+}
+
+.shangChao .mapText .textColumn p {
+	padding-left: 80px;
+	line-height: 19px;
+	left: 0;
+}
+
+/* 上海追溯地图移入信息框开始 */
+.quickCheckMarker .mapText {
+	width: initial;
+	height: auto;
+	left: 34px;
+	top: -55px;
+	overflow: initial;
+}
+
+.quickCheckMarker .mapText .selfAdaption .left {
+	width: 65px;
+	background: url(../img/inif-left.png) no-repeat left;
+	background-size: 100% 100%;
+}
+
+.quickCheckMarker .mapText .selfAdaption p {
+	padding: 5px 0;
+	background: url(../img/inif-center.png) repeat-x;
+	background-size: 100% 100%;
+}
+
+.quickCheckMarker .mapText .selfAdaption .right {
+	width: 37px;
+	background: url(../img/inif-right.png) no-repeat right;
+	background-size: 100% 100%;
+}
+
+.five .mapText {
+	top: -87px;
+	left: 18px;
+}
+
+.five .mapText .selfAdaption .left {
+	width: 143px;
+}
+
+.five .mapText .selfAdaption .right {
+	height: 115px;
+}
+
+.five .mapText .selfAdaption p span {
+	margin-left: -24px;
+}
+
+.five .selfAdaptionImg {
+	bottom: -20px;
+}
+
+.quickCheckMarker .mapText .selfAdaption span {
+	display: block;
+	white-space: nowrap;
+	color: #fff;
+}
+
+.quickCheckMarker .selfAdaptionImg {
+	position: absolute;
+}
+
+/* 上海追溯地图移入信息框结束 */
+.fang,
+fang img {
+	width: 46px;
+	height: 84px;
+	margin-left: 7px;
+	margin-top: 30px;
+}
+
+.custom-content-marker img {
+	width: 100%;
+	height: 100%;
+}
+
+.custom-content-marker .close-btn {
+	position: absolute;
+	top: -6px;
+	right: -8px;
+	width: 15px;
+	height: 15px;
+	font-size: 12px;
+	background-color: initial;
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	line-height: 15px;
+	box-shadow: -1px 1px 1px rgba(10, 10, 10, .2);
+}
+
+.custom-content-marker .close-btn:hover {
+	background: #666;
+}
+
+text.highcharts-credits {
+	display: none;
+}
+
+.highcharts-background {
+	display: none;
+}
+
+.topTitle {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	background: url(../img/topTitle.png) no-repeat;
+	height: 159px;
+}
+
+.topTitle a {
+	cursor: pointer;
+	width: 640px;
+	height: 159px;
+	display: block;
+	margin: auto;
+}
+
+.bottom {
+	padding: 0 55px;
+	position: absolute;
+	bottom: 44px;
+	left: 0;
+	right: 0;
+}
+
+.j_contentbot {
+	height: 184px;
+	background: url(../img/shanghai_trace.png) center/contain no-repeat;
+	position: relative;
+	color: #0EFCFF;
+}
+
+.j_tracediv0 {
+	font-size: 16px;
+	position: absolute;
+	left: 68px;
+	top: 39px;
+	cursor: pointer;
+	width: 18px;
+}
+
+.j_tracediv {
+	width: 92px;
+	text-align: center;
+	position: absolute;
+	cursor: pointer;
+}
+
+.technologicalProcess .active,
+.j_contentbot .active {
+	color: #FFFFFF;
+}
+
+.j_tracediv p:first-child {
+	font-size: 12px;
+}
+
+.j_tracediv p::last-child {
+	font-size: 18px;
+}
+
+.j_tracediv1 {
+	left: 357px;
+	top: 42px;
+}
+
+.j_tracediv2 {
+	left: 357px;
+	top: 110px;
+}
+
+.j_tracediv3 {
+	left: 797px;
+	top: 76px;
+}
+
+.j_tracediv4 {
+	right: 506px;
+	top: 76px;
+}
+
+.j_tracediv5 {
+	right: 66px;
+	top: 43px;
+}
+
+.j_tracediv6 {
+	right: 66px;
+	top: 110px;
+}
+
+.j_traceimg1,
+.j_traceimg2,
+.j_traceimg3,
+.j_traceimg4 {
+	position: absolute;
+}
+
+.j_traceimg1 {
+	left: 118px;
+	top: 26px;
+}
+
+.j_traceimg2 {
+	left: 592px;
+	top: 30px;
+}
+
+.j_traceimg3 {
+	right: 601px;
+	top: 30px;
+}
+
+.j_traceimg4 {
+	right: 198px;
+	top: 30px;
+}
+
+.quickCheck {
+	cursor: pointer;
+}
+
+/* 水波纹 */
+@-webkit-keyframes wateranimate {
+	0% {
+		-webkit-transform: scale(0);
+		opacity: 0.5;
+	}
+
+	100% {
+		-webkit-transform: scale(2);
+		opacity: 0;
+	}
+}
+
+@keyframes wateranimate {
+	0% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+		opacity: 0.5;
+	}
+
+	100% {
+		-webkit-transform: scale(2);
+		transform: scale(2);
+		opacity: 0;
+	}
+}
+
+.quickCheckMarker .maplines,
+.quickCheckMarker .mapIcon,
+.quickCheckMarker .iconfont,
+.quickCheckMarker .mapIcon img,
+.quickCheckMarker .water {
+	position: absolute;
+}
+
+.quickCheckMarker .maplines {
+	left: -28px;
+	top: 20px;
+}
+
+.quickCheckMarker .mapIcon {
+	left: 40px;
+}
+
+.quickCheckMarker .iconfont {
+	color: #FFFFFF;
+	left: 6px;
+	top: 8px;
+}
+
+.quickCheckMarker .mapIcon img {
+	width: initial;
+	height: initial;
+}
+
+.quickCheckMarker .water {
+	transform: rotateX(45deg);
+	top: 16px;
+	width: 200px;
+	left: -46px;
+}
+
+.water1 {
+	-webkit-animation: wateranimate 12s 9s ease-out infinite;
+	animation: wateranimate 12s 9s ease-out infinite;
+}
+
+.water2 {
+	-webkit-animation: wateranimate 12s 6s ease-out infinite;
+	animation: wateranimate 12s 6s ease-out infinite;
+}
+
+.water3 {
+	-webkit-animation: wateranimate 12s 3s ease-out infinite;
+	animation: wateranimate 12s 3s ease-out infinite;
+}
+
+.water4 {
+	-webkit-animation: wateranimate 12s 0s ease-out infinite;
+	animation: wateranimate 12s 0s ease-out infinite;
+}
+
+.water1,
+.water2,
+.water3,
+.water4 {
+	padding: 20%;
+	position: absolute;
+	left: 30%;
+	top: 30%;
+	border: 2px solid #196670;
+	background-color: #0adfff;
+	border-radius: 100%;
+	z-index: 1;
+	opacity: 0;
+}
+.homeRanking ul li a {
+	color: #FFFEEF;
+	text-decoration: none;
+}

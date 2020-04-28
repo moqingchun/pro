@@ -1,0 +1,10 @@
+{{extend './layout.html'}}
+
+{{block 'content'}}
+<form action="/student/update" method="post">
+	<input type="hidden" name="id" id="" value="{{student.id}}" />
+	<input type="text" name="name" id="" value="{{student.name}}" />
+	<input type="text" name="age" id="" value="{{student.age}}" />
+	<input class="btn btn-primary" type="submit" value="修改" />
+</form>
+{{/block}}

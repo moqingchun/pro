@@ -1,0 +1,4 @@
+<!--components/w-top/w-top.wxml-->
+<view bind:tap="goTop">
+  top
+</view>
