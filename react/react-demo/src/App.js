@@ -3,7 +3,8 @@ import React, { Component, Fragment } from 'react'//Fragment空标签，不会�
 import {
     TodoHeader,
     TodoInput,
-    TodoList
+    TodoList,
+    Like
 } from './components'
 
 export default class App extends Component {
@@ -24,14 +25,50 @@ export default class App extends Component {
             }]
         }
     }
+    addTodo = (pa) => {
+        // console.log(pa)
+        this.setState({
+            todos: this.state.todos.concat({
+                id: Math.random(),
+                name: pa,
+                isComp: false
+            })
+        })
+    }
+    compChange = (pa) => {
+        this.setState({
+            todos: this.state.todos.map(v => {
+                if (v.id === pa) {
+                    v.isComp = !v.isComp
+                }
+                return v
+            })
+        })
+        // this.setState((prevState) => {
+        //     return {
+        //         todos: prevState.todos.map(v => {
+        //             if (v.id === pa) {
+        //                 v.isComp = !v.isComp
+        //             }
+        //             return v
+        //         })
+        //     }
+        // }
+
+        // )
+    }
     render() {
         return (
             <Fragment>
                 <TodoHeader title={this.state.title}>
                     {this.state.slot}
                 </TodoHeader>
-                <TodoInput btnText={this.state.btnText} />
-                <TodoList todos={this.state.todos} />
+
+                <TodoInput btnText={this.state.btnText} addTodo={this.addTodo} />
+
+                <TodoList todos={this.state.todos} compChange={this.compChange} />
+
+                <Like />
             </Fragment>
         )
     }

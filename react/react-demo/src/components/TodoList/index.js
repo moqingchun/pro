@@ -7,7 +7,7 @@ export default class index extends Component {
             <div>
                 {
                     this.props.todos.map(item => {
-                        return <Item key={item.id} {...item} />
+                        return <Item compChange={this.props.compChange} key={item.id} {...item} />
                     })
                 }
             </div>
