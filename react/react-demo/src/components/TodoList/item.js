@@ -7,19 +7,15 @@ export default class item extends Component {
     //避免多次渲染
     shouldComponentUpdate(a,b){
         // console.log(a,b)
-        return a.isComp!==this.props.isComp
+        return a.completed!==this.props.completed
     }
     
     render() {
-        console.log(11)
-        const {
-            name, isComp
-        } = this.props
-
+        // console.log(11)
         return (
             <div>
-                <input type="checkbox" checked={this.props.isComp} onChange={this.handleChange} />
-                {name}{isComp ? "完成" : "未完成"}
+                <input type="checkbox" checked={this.props.completed} onChange={this.handleChange} />
+                {this.props.title}{this.props.completed ? "完成" : "未完成"}
             </div>
         )
     }

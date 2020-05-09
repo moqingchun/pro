@@ -4,8 +4,11 @@ import {
     TodoHeader,
     TodoInput,
     TodoList,
-    Like
+    Like,
+    Cart
 } from './components'
+
+import {getTodos} from './services'
 
 export default class App extends Component {
     constructor() {
@@ -14,15 +17,8 @@ export default class App extends Component {
             title: '头部',
             slot: '哈哈',
             btnText: '添加',
-            todos: [{
-                id: 1,
-                name: 'jack',
-                isComp: true
-            }, {
-                id: 2,
-                name: 'fang',
-                isComp: false
-            }]
+            loding:false,
+            todos: []
         }
     }
     addTodo = (pa) => {
@@ -30,32 +26,46 @@ export default class App extends Component {
         this.setState({
             todos: this.state.todos.concat({
                 id: Math.random(),
-                name: pa,
-                isComp: false
+                title: pa,
+                completed: false
             })
         })
     }
     compChange = (pa) => {
+        this.setState((prevState) => {
+            return {
+                todos: prevState.todos.map(v => {
+                    if (v.id === pa) {
+                        v.completed = !v.completed
+                    }
+                    return v
+                })
+            }
+        })
+    }
+    getTodo = ()=>{
         this.setState({
-            todos: this.state.todos.map(v => {
-                if (v.id === pa) {
-                    v.isComp = !v.isComp
-                }
-                return v
+            loding:true
+        })
+        getTodos().
+        then(res=>{
+            if(res.status === 200){
+                this.setState({
+                    todos:res.data.slice(0,20)
+                })
+            }
+        }).
+        catch(res=>{
+            console.log(res)
+        }).
+        finally(()=>{
+            this.setState({
+                loding:false
             })
         })
-        // this.setState((prevState) => {
-        //     return {
-        //         todos: prevState.todos.map(v => {
-        //             if (v.id === pa) {
-        //                 v.isComp = !v.isComp
-        //             }
-        //             return v
-        //         })
-        //     }
-        // }
-
-        // )
+    }
+    componentDidMount(){
+        this.getTodo()
     }
     render() {
         return (
@@ -66,9 +76,14 @@ export default class App extends Component {
 
                 <TodoInput btnText={this.state.btnText} addTodo={this.addTodo} />
 
-                <TodoList todos={this.state.todos} compChange={this.compChange} />
+                {
+                    this.state.loding ? <div>加载中...</div> :
+                    <TodoList todos={this.state.todos} compChange={this.compChange} />
+                }
 
                 <Like />
+                ==================================购物车=================================
+                <Cart />
             </Fragment>
         )
     }
