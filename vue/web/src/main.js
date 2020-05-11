@@ -5,7 +5,7 @@ import store from './store'
 import http, {
 	get,
 	post
-} from './assets/js/api' //默认的不加花括号，非默认的加花括号，并且默认的default只能有一个
+} from './service' //默认的不加花括号，非默认的加花括号，并且默认的default只能有一个
 import util from './assets/js/util.js'
 import ElementUI,{Message} from 'element-ui'
 import './assets/css/reset.scss'
