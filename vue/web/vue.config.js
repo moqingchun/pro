@@ -16,5 +16,13 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  css:{
+	  loaderOptions:{
+		  sass:{
+			  prependData: `@import "~@/assets/css/reset.scss"`
+		  }
+	  }
+  },
+  productionSourceMap: false
 }

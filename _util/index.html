@@ -12,12 +12,25 @@
 <p>aaa</p>
 <p>bbb</p>
 </body>
-<script src="http://api.map.baidu.com/api?v=3.0&ak=F454f8a5efe5e577997931cc01de3974" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript" src="jquery.js"></script>
 <script src="_util.js"></script>
 <script>
     $(function(){
-		_util.messageBox()
+		$.ajax({
+		        url: "http://10.250.218.48:8080/login",
+		        type: "POST",
+		        data: {
+		            username: "phrcps",
+		            password: "000000"
+		        },
+		        success: function(res) {
+		            console.log(JSON.stringify(res))
+		        },
+		        error: function(res) {
+		            console.log(JSON.stringify(res))
+		        }
+		    })
 	})
 </script>
 </html>

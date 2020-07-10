@@ -70,7 +70,7 @@
 			 :page-sizes="[10, 20, 30, 40]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
 			</el-pagination>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -82,13 +82,13 @@
 		},
 		data() {
 			return {
-				colChoose:{
-					code:true,
-					date:true,
-					people:true,
-					receive:true,
-					phone:true,
-					action:true
+				colChoose: {
+					code: true,
+					date: true,
+					people: true,
+					receive: true,
+					phone: true,
+					action: true
 				},
 				formInline: {
 					keyword: '',
@@ -104,11 +104,37 @@
 		methods: {
 			init() {
 				console.log(this.formInline)
-				let _self = this;
 				this.loading = true;
-				this.$post('/userlist').then(function(res) {
-					_self.loading = false;
-					_self.tableData = res;
+				// const abc = async () => {
+				// 	let a = await self.$post("login", self.loginData);
+				// 	let loginName = a.data.content.loginName;
+				// 	let b = await self.$get("index/getSystemName", {
+				// 		loginName
+				// 	});
+				// 	let {
+				// 		systemName,
+				// 		entpId
+				// 	} = b.data.data;
+				// 	let c = await self.$post("auth/valid");
+
+				// 	self.waiting = false;
+				// 	self.login({
+				// 		loginName,
+				// 		systemName,
+				// 		entpId
+				// 	});
+				// 	self.$router.push({
+				// 	    path: "/home"
+				// 	});
+
+				// 	return c;
+				// };
+				// abc().then(res => {
+				// 	console.log(res);
+				// });
+				this.$post('/userlist').then(res => {
+					this.loading = false;
+					this.tableData = res;
 				})
 			},
 			dateChange(v) {
@@ -120,10 +146,13 @@
 			handleSizeChange(v) {
 				console.log(v)
 			},
-			enterDetail(row){
-				this.$router.push({path:'/salesoutlet/detail',query:{
-					id:row.name
-				}})
+			enterDetail(row) {
+				this.$router.push({
+					path: '/salesoutlet/detail',
+					query: {
+						id: row.name
+					}
+				})
 			}
 		},
 		mounted() {
