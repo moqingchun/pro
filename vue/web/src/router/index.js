@@ -20,7 +20,7 @@ const BM_EmployeeInfoDt = () => import('@/views/basedatamanagement/employeeinfom
 Vue.use(Router)
 
 export default new Router({
-	mode: 'hash',
+	mode: 'history',
 	base: process.env.BASE_URL,
 	routes: [{
 			path: '/',
