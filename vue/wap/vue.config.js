@@ -1,13 +1,13 @@
 
 module.exports = {
-  // publicPath: './',//相对路径，可以任意部署。但是如果使用history模式，则不要用相对路径。
+  publicPath: './',
   outputDir: 'dist',
   devServer: {
-    open: true, 
-    port: 8087,
+    open: true, //浏览器自动打开页面
+    port: 9999,
     proxy: {
       '/api': {
-        target: process.env.VUE_APP_BASEURL, 
+        target: process.env.VUE_APP_BASEURL, // 接口地址域名
         ws: true, // 启用websockets
         // secure: false,  // 如果是https接口，需要配置这个参数
         changOrigin: true, //开启代理,如果接口跨域，需要进行这个参数配置
@@ -16,13 +16,5 @@ module.exports = {
         }
       }
     }
-  },
-  // css:{
-	 //  loaderOptions:{
-		//   sass:{
-		// 	  prependData: `@import "~@/assets/css/reset.scss"`
-		//   }
-	 //  }
-  // },
-  productionSourceMap: false
+  }
 }

@@ -8,7 +8,4 @@
 </script>
 <style lang="scss">
 	@import './assets/fonts/iconfont.css';
-	#app{
-		height: 100%;
-	}
 </style>
