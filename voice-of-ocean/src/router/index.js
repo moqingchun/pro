@@ -7,6 +7,8 @@ Router.prototype.push = function push(location) {
 
 
 const Login = () => import('@/views/Login')
+const All = () => import('@/views/All')
+const List = () => import('@/views/List')
 
 Vue.use(Router)
 
@@ -22,6 +24,20 @@ export default new Router({
         component: Login,
         meta: {
             title: '登录'
+        }
+    }, {
+        path: '/all',
+        name: 'All',
+        component: All,
+        meta: {
+            title: '瀚洋之音'
+        }
+    }, {
+        path: '/list',
+        name: 'List',
+        component: List,
+        meta: {
+            title: '列表'
         }
     }]
 })

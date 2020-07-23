@@ -1,5 +1,5 @@
 
-p{
+p,dl,dt,dd{
     margin: 0;
     padding: 0;
 }
@@ -8,4 +8,8 @@ html,body{
 }
 body{
     color: #333;
+}
+#app{
+    height: 100%;
+    padding: 0 .32rem;
 }
