@@ -42,7 +42,7 @@ export default {
                 return;
             }
             this.loading = true;
-            console.log(1);
+            this.$router.push("/all");
         }
     }
 };

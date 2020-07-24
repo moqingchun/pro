@@ -10,6 +10,8 @@ import http, {
 
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import waterfall from 'vue-waterfall2'
+Vue.use(waterfall)
 Vue.use(Vant)
 
 Vue.prototype.$http = http

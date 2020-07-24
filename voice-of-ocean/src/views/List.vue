@@ -1,8 +1,8 @@
 <template>
-    <div class="list">
+    <div class="list-page">
         <Title :title="title" />
         <van-list>
-            <dl>
+            <dl @click="toDetail">
                 <dt class="img-dt">
                     <img src />
                 </dt>
@@ -34,7 +34,11 @@ export default {
             title: "a"
         };
     },
-    methods: {},
+    methods: {
+        toDetail() {
+            this.$router.push("/detail");
+        }
+    },
     created() {},
     components: {
         Title
@@ -42,7 +46,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.list {
+.list-page {
     dl {
         display: flex;
         align-items: center;

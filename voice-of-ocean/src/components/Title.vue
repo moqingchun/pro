@@ -16,8 +16,7 @@ export default {
 .common-title {
     font-size: 0.36rem;
     text-align: center;
-    height: 0.8rem;
-    line-height: 0.8rem;
-    margin-bottom: 0.36rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
 }
 </style>

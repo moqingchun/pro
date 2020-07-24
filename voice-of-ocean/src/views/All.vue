@@ -1,10 +1,10 @@
 <template>
-    <div class="all">
+    <div class="all-page">
         <Title :title="title" />
         <div class="block">
             <div class="nav">
                 <span class="nav-lt">投票</span>
-                <div class="nav-rt">
+                <div class="nav-rt" @click="toList">
                     <span>查看更多</span>
                     <van-icon name="arrow" color="#999999" size=".2rem" />
                 </div>
@@ -128,20 +128,22 @@ import Title from "@/components/Title";
 export default {
     data() {
         return {
-            title: ""
+            title: "瀚洋之音"
         };
     },
-    methods: {},
-    created() {
-        this.title = this.$route.meta.title;
+    methods: {
+        toList() {
+            this.$router.push("/list");
+        }
     },
+    created() {},
     components: {
         Title
     }
 };
 </script>
 <style lang="scss">
-.all {
+.all-page {
     .block {
         margin-bottom: 0.54rem;
         .nav {
