@@ -6,19 +6,12 @@
             :gutterWidth="gutterWidth"
             :data="data"
             @loadmore="loadmore"
-            @scroll="scroll"
         >
-            <template>
-                <div class="cell-item" v-for="(item,index) in data" :key="index">
-                    <div class="item-body">
-                        <div class="item-desc">{{item.title}}</div>
-                        <div class="item-footer">
-                            <div class="avatar" :style="{backgroundImage : `url(${item.avatar})` }"></div>
-                        </div>
-                    </div>
-                </div>
-            </template>
-        </waterfall>https://www.jianshu.com/p/69d22349aacd
+            <div class="cell-item" v-for="(item,index) in data" :key="index">
+                <img v-if="item.img" :lazy-src="item.img" alt="加载错误" />
+                haha
+            </div>
+        </waterfall>
     </div>
 </template>
  
@@ -27,59 +20,72 @@
 export default {
     data() {
         return {
-            data: [
+            data: [],
+            aa: [
                 {
-                    title: "111",
-                    avatar:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595596933221&di=de496bce1cedfdb6525ccc16ce6f3abc&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg"
+                    img:
+                        "https://image.watsons.com.cn//upload/8a316140.png?w=377&h=451&x-oss-process=image/resize,w_1080"
                 },
                 {
-                    title: "我是",
-                    avatar:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595596933221&di=455f4edc292a22bbb6718dcd076f78f2&imgtype=0&src=http%3A%2F%2Fa1.att.hudong.com%2F05%2F00%2F01300000194285122188000535877.jpg"
+                    img:
+                        "https://image.watsons.com.cn//upload/083767f0.JPG?w=828&h=620&x-oss-process=image/resize,w_1080"
                 },
                 {
-                    title: "我是我是我是我是我是我是我是我是我是我是",
-                    avatar:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595596933221&di=80e53804001232514d60c9832f521f33&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F86%2F10%2F01300000184180121920108394217.jpg"
+                    img:
+                        "https://image.watsons.com.cn//upload/02a4f38d.jpg?w=1067&h=1067&x-oss-process=image/resize,w_1080"
                 },
                 {
-                    title: "我是我是我是我是",
-                    avatar:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595596933220&di=6bd161afb3dcb4d89cf97a4cd5fc41ce&imgtype=0&src=http%3A%2F%2Fdmimg.5054399.com%2Fallimg%2Fpkm%2Fpk%2F13.jpg"
+                    img:
+                        "https://image.watsons.com.cn//upload/589585c1.jpeg?x-oss-process=image/resize,w_1080"
                 },
                 {
-                    title:
-                        "我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是我是",
-                    avatar:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595596933221&di=455f4edc292a22bbb6718dcd076f78f2&imgtype=0&src=http%3A%2F%2Fa1.att.hudong.com%2F05%2F00%2F01300000194285122188000535877.jpg"
+                    img:
+                        "https://image.watsons.com.cn//upload/d862d932.jpg?w=1080&h=1440&x-oss-process=image/resize,w_1080"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/eb4fb58f.jpg?w=1080&h=1080&x-oss-process=image/resize,w_1080"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/71d19462.jpg?x-oss-process=image/resize,w_1080"
                 }
             ],
-            col: 2
+            col: 2,
+            loading: false
         };
+    },
+    methods: {
+        loadmore() {
+            console.log(1);
+
+            this.loading = true;
+            setTimeout(() => {
+                this.data = this.data.concat(this.aa);
+                this.loading = false;
+            }, 1000);
+        }
     },
     computed: {
         itemWidth() {
-            return 138 * 0.5 * (document.documentElement.clientWidth / 375);
+            return 3.36 * (document.documentElement.clientWidth / 7.5);
         },
         gutterWidth() {
-            return 9 * 0.5 * (document.documentElement.clientWidth / 375);
+            return 0.1 * (document.documentElement.clientWidth / 7.5);
         }
     },
-    methods: {
-        scroll(scrollData) {
-            console.log(scrollData);
-        },
-        loadmore(index) {
-            console.log(index);
-            this.data = this.data.concat(this.data);
-        }
+    mounted() {
+        this.data = this.aa;
     }
 };
 </script>
-<style lang="scss">
-.avatar {
-    width: 3rem;
-    height: 10rem;
+<style lang="scss" scoped>
+.cell-item {
+    margin-bottom: 10px;
+    img {
+        width: 100%;
+        display: block;
+        vertical-align: top;
+    }
 }
 </style>

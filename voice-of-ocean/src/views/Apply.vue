@@ -34,7 +34,7 @@ import Title from "@/components/Title";
 export default {
     data() {
         return {
-            title: "详情",
+            title: "活动详情",
             submitForm: {
                 tel: null,
                 no: null

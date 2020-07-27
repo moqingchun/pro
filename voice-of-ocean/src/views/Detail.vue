@@ -21,23 +21,32 @@
         </div>
         <div class="content-title">参与选手</div>
         <div class="player-box">
-            <dl>
-                <dt>
-                    <!-- <img src /> -->
-                    <div class="vote-box">
-                        <p>投票数</p>
-                        <p>50</p>
-                    </div>
-                </dt>
-                <dd>
-                    <div class="title-name">
-                        <span>标题名称</span>
-                        <div>投票</div>
-                    </div>
-                    <div class="des-txt">这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述</div>
-                    <div class="code-no">编号：20</div>
-                </dd>
-            </dl>
+            <waterfall
+                :col="col"
+                :width="itemWidth"
+                :gutterWidth="gutterWidth"
+                :data="data"
+                @loadmore="loadmore"
+            >
+                <dl v-for="(item,index) in data" :key="index">
+                    <dt>
+                        <img :lazy-src="item.img" />
+                        <div class="vote-box">
+                            <p>投票数</p>
+                            <p>50</p>
+                        </div>
+                    </dt>
+                    <dd>
+                        <div class="title-name">
+                            <span>标题名称</span>
+                            <div>投票</div>
+                        </div>
+                        <div class="des-txt">{{item.des}}</div>
+                        <div class="code-no">编号：20</div>
+                    </dd>
+                </dl>
+            </waterfall>
+            <div class="loading-tip" v-show="loading">加载中...</div>
         </div>
     </div>
 </template>
@@ -46,15 +55,81 @@ import Title from "@/components/Title";
 export default {
     data() {
         return {
-            title: "详情",
-            serchValue: ""
+            title:
+                this.$store.state.flag.flag === "vote"
+                    ? "投票详情"
+                    : "福利详情",
+            serchValue: "",
+            data: [],
+            aa: [
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/8a316140.png?w=377&h=451&x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/083767f0.JPG?w=828&h=620&x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/02a4f38d.jpg?w=1067&h=1067&x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/589585c1.jpeg?x-oss-process=image/resize,w_1080",
+                    des: "这是很长"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/d862d932.jpg?w=1080&h=1440&x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/eb4fb58f.jpg?w=1080&h=1080&x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的述这是很长的描述这是很长的描述这是很长的描述任务而对方的方法都是"
+                },
+                {
+                    img:
+                        "https://image.watsons.com.cn//upload/71d19462.jpg?x-oss-process=image/resize,w_1080",
+                    des:
+                        "这是很长的描述这是很长的描述这是很长的描述这是很长的描述这是很长的描述haha还安好哈US后打开无活动卡奴好的"
+                }
+            ],
+            col: 2,
+            loading: false
         };
     },
     methods: {
         onSearch() {},
-        onCancel() {}
+        onCancel() {},
+        loadmore() {
+            this.loading = true;
+            setTimeout(() => {
+                this.data = this.data.concat(this.aa);
+                this.loading = false;
+            }, 1000);
+        }
     },
-    created() {},
+    computed: {
+        itemWidth() {
+            return 3.36 * (document.documentElement.clientWidth / 7.5);
+        },
+        gutterWidth() {
+            return 0.1 * (document.documentElement.clientWidth / 7.5);
+        }
+    },
+    created() {
+        this.data = this.aa;
+    },
     components: {
         Title
     }
@@ -119,18 +194,24 @@ export default {
         font-size: 0.36rem;
     }
     .player-box {
+        .loading-tip {
+            text-align: center;
+            font-size: 0.26rem;
+            padding: 0.2rem 0;
+        }
         dl {
-            width: 3.36rem;
+            // width: 3.36rem;
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 0 5px #f2f2f2;
+            margin-bottom: 0.1rem;
             dt {
                 width: inherit;
                 height: 2.32rem;
                 background: #f1f8ff;
                 position: relative;
                 & > img {
-                    width: inherit;
+                    width: 100%;
                     height: inherit;
                 }
                 .vote-box {
@@ -173,7 +254,7 @@ export default {
                     color: #999;
                 }
                 .des-txt {
-                    padding-bottom: 0.3rem;
+                    padding-bottom: 0.2rem;
                 }
                 .code-no {
                     padding-bottom: 0.22rem;
