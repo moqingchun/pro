@@ -4,7 +4,7 @@
         <div class="img-box">
             <img
                 v-if="htmlText.activityStatus!=='9'"
-                :src="'http://c7.aijinseliunian.xyz:5432'+htmlText.activityImage"
+                :src="VUE_APP_BASEURL+htmlText.activityImage"
                 alt
             />
             <div v-if="htmlText.testUser==='1'">测试</div>
@@ -76,7 +76,8 @@ export default {
                 enrollDatetime: null,
                 emergencyPhone: null,
                 familyNumber: null
-            }
+            },
+            VUE_APP_BASEURL: process.env.VUE_APP_BASEURL
         };
     },
     methods: {

@@ -92,7 +92,7 @@
                     >
                         <img
                             v-if="item.activityStatus!=='9'"
-                            :src="'http://c7.aijinseliunian.xyz:5432'+item.activityImage"
+                            :src="VUE_APP_BASEURL+item.activityImage"
                         />
                         <div v-if="item.testUser==='1'">测试</div>
                         <span v-if="item.activityStatus==='9'">活动已结束</span>
@@ -112,18 +112,29 @@
             <div class="nav">
                 <span class="nav-lt">招聘</span>
             </div>
-            <div class="qrcode"></div>
+            <div class="qrcode">
+                <img :src="qrcodeImg" />
+                <div style="position: relative" ref="box">
+                    <img :src="resImg" />
+                    <div id="qrcode" style="position:absolute;top:0;left:0;width:80px;height:80px"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
 import { mapMutations } from "vuex";
+import { qrcanvas } from "qrcanvas";
+import html2canvas from "html2canvas";
 import Title from "@/components/Title";
 export default {
     data() {
         return {
             title: "瀚洋之音",
-            list: []
+            list: [],
+            qrcodeImg: "",
+            resImg: "",
+            VUE_APP_BASEURL: process.env.VUE_APP_BASEURL
         };
     },
     methods: {
@@ -159,6 +170,44 @@ export default {
             }).then(res => {
                 this.list = this.list.concat(res.rows);
             });
+            this.$get("/recruitment/api/getRecruitmentPoster").then(res => {
+                this.resImg = this.VUE_APP_BASEURL + res;
+                //合成分享图
+                setTimeout(() => {
+                    html2canvas(this.$refs.box).then(canvas => {
+                        this.qrcodeImg = URL.createObjectURL(
+                            this.base64ToBlob(canvas.toDataURL())
+                        );
+                    });
+                }, 100);
+            });
+            this.$nextTick(() => {
+                var canvas1 = qrcanvas({
+                    data: decodeURIComponent("www.baidu.com"),
+                    size: 80
+                });
+                document.getElementById("qrcode").innerHTML = "";
+                document.getElementById("qrcode").appendChild(canvas1);
+            });
+        },
+        base64ToBlob(code) {
+            let parts = code.split(";base64,");
+            let contentType = parts[0].split(":")[1];
+            let raw = window.atob(parts[1]);
+            let rawLength = raw.length;
+
+            let uInt8Array = new Uint8Array(rawLength);
+
+            for (let i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+            return new Blob([uInt8Array], { type: contentType });
+        }
+    },
+    watch: {
+        qrcodeImg() {
+            //监听到imgUrl有变化以后 说明新图片已经生成 隐藏DOM
+            this.$refs.box.style.display = "none";
         }
     },
     created() {
@@ -244,6 +293,10 @@ export default {
             border-radius: 4px;
             overflow: hidden;
             margin: 0 auto;
+            img {
+                width: inherit;
+                height: inherit;
+            }
         }
     }
 }

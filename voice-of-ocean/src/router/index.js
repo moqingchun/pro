@@ -11,6 +11,7 @@ const All = () => import('@/views/All')
 const List = () => import('@/views/List')
 const Detail = () => import('@/views/Detail')
 const Apply = () => import('@/views/Apply')
+const Recruitment = () => import('@/views/Recruitment')
 const Test = () => import('@/views/Test')
 
 Vue.use(Router)
@@ -58,6 +59,13 @@ export default new Router({
         component: Apply,
         meta: {
             title: '报名'
+        }
+    }, {
+        path: '/recruitment',
+        name: 'Recruitment',
+        component: Recruitment,
+        meta: {
+            title: '应聘'
         }
     }, {
         path: '/test',

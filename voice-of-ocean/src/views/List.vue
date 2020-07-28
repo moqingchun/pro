@@ -6,10 +6,7 @@
                 <dt
                     :class="{'img-dt':item.activityStatus!=='9','over-dt':item.activityStatus==='9'}"
                 >
-                    <img
-                        v-if="item.activityStatus!=='9'"
-                        :src="'http://c7.aijinseliunian.xyz:5432'+item.activityImage"
-                    />
+                    <img v-if="item.activityStatus!=='9'" :src="VUE_APP_BASEURL+item.activityImage" />
                     <div v-if="item.testUser==='1'">测试</div>
                     <span v-if="item.activityStatus==='9'">
                         活动
@@ -42,7 +39,8 @@ export default {
                 pageNum: 0,
                 pageSize: 10,
                 userId: "101"
-            }
+            },
+            VUE_APP_BASEURL: process.env.VUE_APP_BASEURL
         };
     },
     methods: {
