@@ -1,62 +1,119 @@
 <template>
     <div class="apply-page">
         <Title :title="title" />
-        <div class="img-box"></div>
+        <div class="img-box">
+            <img
+                v-if="htmlText.activityStatus!=='9'"
+                :src="'http://c7.aijinseliunian.xyz:5432'+htmlText.activityImage"
+                alt
+            />
+            <div v-if="htmlText.testUser==='1'">测试</div>
+            <span v-if="htmlText.activityStatus==='9'">活动已结束</span>
+        </div>
         <div class="title-box">
-            <span class="span-one">2020摄影大赛</span>
-            <span class="span-last">截止时间：2020-10-10 15:00</span>
+            <span class="span-one">{{htmlText.activityName}}</span>
+            <span
+                class="span-last"
+            >{{htmlText.activityStatus==='9'?'活动已结束':'截止时间：'+htmlText.deadline}}</span>
         </div>
         <div style="position:relative;">
-            <div class="cell-box">活动时间：2020-06-03 13:00</div>
-            <div class="cell-box">持续时间：2020-06-03 13:00</div>
-            <div class="cell-box">活动地址：2020-06-03 13:00</div>
-            <div
-                class="cell-box"
-            >活动简介：2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛活动简介：2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛2020摄影大赛.</div>
+            <div class="cell-box">活动时间：{{htmlText.activityDatetime}}</div>
+            <div class="cell-box">持续时间：{{htmlText.activityContinueTime+htmlText.timeType}}</div>
+            <div class="cell-box">活动地址：{{htmlText.activityAddress}}</div>
+            <div class="cell-box quill-edit" v-html="'活动简介：<br><br>'+htmlText.activityIntroduce"></div>
             <div class="bg-line"></div>
         </div>
         <van-cell-group>
-            <van-field v-model="submitForm.tel" type="tel" label="联系方式" placeholder="请输入" />
-            <van-field v-model="submitForm.no" type="digit" label="家属人数" placeholder="请输入" />
+            <van-field
+                v-model="htmlText.emergencyPhone"
+                type="tel"
+                label="联系方式"
+                placeholder="请输入"
+                :readonly="htmlText.activityStatus==='9'"
+            />
+            <van-field
+                v-if="htmlText.activityFamily==='1'"
+                v-model="htmlText.familyNumber"
+                type="digit"
+                label="家属人数"
+                placeholder="请输入"
+                :readonly="htmlText.activityStatus==='9'"
+            />
         </van-cell-group>
         <van-button
+            v-if="htmlText.activityStatus!=='9'"
             class="login-btn"
             :loading="loading"
             block
             color="#108ee9"
             loading-text="报名中..."
             @click="SubmitFn"
-        >我要报名</van-button>
+        >{{!!htmlText.enrollDatetime?'已报名(修改信息)':'我要报名'}}</van-button>
     </div>
 </template>
 <script>
 import Title from "@/components/Title";
+import { formatTime } from "@/assets/js/util";
 export default {
     data() {
         return {
-            title: "活动详情",
-            submitForm: {
-                tel: null,
-                no: null
-            },
-            loading: false
+            title: "活动",
+            loading: false,
+            htmlText: {
+                id: null,
+                userId: null,
+                testUser: "",
+                activityName: "",
+                deadline: "",
+                activityImage: "",
+                activityStatus: "",
+                activityDatetime: "",
+                activityContinueTime: null,
+                timeType: "",
+                activityAddress: "",
+                activityFamily: "",
+                activityIntroduce: "",
+                enrollDatetime: null,
+                emergencyPhone: null,
+                familyNumber: null
+            }
         };
     },
     methods: {
         SubmitFn() {
-            if (!this.submitForm.tel) {
+            if (!this.htmlText.emergencyPhone) {
                 this.$toast("请输入正确的手机号");
                 return;
             }
-            if (!this.submitForm.no) {
-                this.$toast("请输入家属人数");
-                return;
-            }
             this.loading = true;
-            this.$toast.success("报名成功");
+            this.$post("/activity/api/updateActivityUserInfo", {
+                emergencyPhone: this.htmlText.emergencyPhone,
+                enrollDatetime: formatTime(new Date()),
+                familyNumber: this.htmlText.familyNumber
+                    ? this.htmlText.familyNumber
+                    : 0,
+                id: this.$route.query.id
+            }).then(res => {
+                this.loading = false;
+                if (res.code !== 0) {
+                    this.$toast.fail(res.msg);
+                    return;
+                }
+
+                this.$toast.success("报名成功");
+            });
+        },
+        init() {
+            this.$get("/activity/api/wechatActivityDetail", {
+                id: this.$route.query.id
+            }).then(res => {
+                this.htmlText = Object.assign({}, this.htmlText, res);
+            });
         }
     },
-    created() {},
+    created() {
+        this.init();
+    },
     components: {
         Title
     }
@@ -70,6 +127,33 @@ export default {
         border-radius: 4px;
         overflow: hidden;
         background: #f1f8ff;
+        position: relative;
+        img {
+            width: inherit;
+            height: inherit;
+        }
+        div {
+            width: 0.7rem;
+            height: 0.34rem;
+            line-height: 0.34rem;
+            text-align: center;
+            font-size: 0.16rem;
+            position: absolute;
+            bottom: 0.12rem;
+            right: 0.12rem;
+            background: #ebedf0;
+            border-radius: 4px;
+        }
+        span {
+            display: block;
+            width: inherit;
+            height: inherit;
+            font-size: 0.24rem;
+            color: #999;
+            background: #ebedf0;
+            text-align: center;
+            line-height: 2.64rem;
+        }
     }
     .title-box {
         display: flex;
@@ -88,6 +172,10 @@ export default {
         padding: 0.26rem 0;
         border-top: 1px solid #eeeeee;
         font-size: 0.26rem;
+        &.quill-edit {
+            word-break: break-all;
+            word-wrap: break-word;
+        }
     }
     .bg-line {
         position: absolute;

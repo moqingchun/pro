@@ -2,7 +2,7 @@
     <div class="list-page">
         <Title :title="title" />
         <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-            <dl v-for="(item,index) in list" :key="index" @click="toDetail">
+            <dl v-for="(item,index) in list" :key="index" @click="toDetail(item.id)">
                 <dt
                     :class="{'img-dt':item.activityStatus!=='9','over-dt':item.activityStatus==='9'}"
                 >
@@ -46,11 +46,22 @@ export default {
         };
     },
     methods: {
-        toDetail() {
+        toDetail(id) {
             let flag = this.$store.state.flag.flag;
             if (flag === "vote" || flag === "welfare")
-                this.$router.push("/detail");
-            else this.$router.push("/apply");
+                this.$router.push({
+                    path: "/detail",
+                    query: {
+                        id
+                    }
+                });
+            else
+                this.$router.push({
+                    path: "/apply",
+                    query: {
+                        id
+                    }
+                });
         },
         onLoad() {
             this.init();
@@ -60,7 +71,7 @@ export default {
             this.requestPram.pageNum++;
             if (flag === "activity") {
                 this.$get(
-                    "/activity/wechatActivityList",
+                    "/activity/api/wechatActivityList",
                     this.requestPram
                 ).then(res => {
                     this.list = this.list.concat(res.rows);

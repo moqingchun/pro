@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="list">
-                <dl v-for="(item,index) in list" :key="index" @click="toDetail('activity')">
+                <dl v-for="(item,index) in list" :key="index" @click="toDetail('activity',item.id)">
                     <dt
                         :class="{'img-dt':item.activityStatus!=='9','over-dt':item.activityStatus==='9'}"
                     >
@@ -134,13 +134,25 @@ export default {
             this.flagFn(ep);
             this.$router.push("/list");
         },
-        toDetail(ep) {
+        toDetail(ep, id) {
             this.flagFn(ep);
-            if (ep === "vote" || ep === "welfare") this.$router.push("/detail");
-            else this.$router.push("/apply");
+            if (ep === "vote" || ep === "welfare")
+                this.$router.push({
+                    path: "/detail",
+                    query: {
+                        id
+                    }
+                });
+            else
+                this.$router.push({
+                    path: "/apply",
+                    query: {
+                        id
+                    }
+                });
         },
         init() {
-            this.$get("/activity/wechatActivityList", {
+            this.$get("/activity/api/wechatActivityList", {
                 pageNum: 1,
                 pageSize: 3,
                 userId: "101"
@@ -196,6 +208,10 @@ export default {
                         right: 0.12rem;
                         background: #ebedf0;
                         border-radius: 4px;
+                    }
+                    img {
+                        width: inherit;
+                        height: inherit;
                     }
                 }
                 .over-dt {

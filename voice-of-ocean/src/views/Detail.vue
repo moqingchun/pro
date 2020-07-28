@@ -55,10 +55,7 @@ import Title from "@/components/Title";
 export default {
     data() {
         return {
-            title:
-                this.$store.state.flag.flag === "vote"
-                    ? "投票详情"
-                    : "福利详情",
+            title: this.$store.state.flag.flag === "vote" ? "投票" : "福利",
             serchValue: "",
             data: [],
             aa: [
