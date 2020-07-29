@@ -112,11 +112,11 @@
             <div class="nav">
                 <span class="nav-lt">招聘</span>
             </div>
-            <div class="qrcode">
-                <img :src="qrcodeImg" />
-                <div style="position: relative" ref="box">
-                    <img :src="resImg" />
-                    <div id="qrcode" style="position:absolute;top:0;left:0;width:80px;height:80px"></div>
+            <div class="qrWrap">
+                <img :src="posterDataUrl" alt />
+                <div id="poster">
+                    <img id="aaa" :src="resImg" />
+                    <canvas class="qr" id="qrCode-canvas"></canvas>
                 </div>
             </div>
         </div>
@@ -124,16 +124,16 @@
 </template>
 <script>
 import { mapMutations } from "vuex";
-import { qrcanvas } from "qrcanvas";
-import html2canvas from "html2canvas";
 import Title from "@/components/Title";
+import QRCode from "qrcode";
+import html2canvas from "html2canvas";
 export default {
     data() {
         return {
             title: "瀚洋之音",
             list: [],
-            qrcodeImg: "",
             resImg: "",
+            posterDataUrl: "",
             VUE_APP_BASEURL: process.env.VUE_APP_BASEURL
         };
     },
@@ -171,46 +171,32 @@ export default {
                 this.list = this.list.concat(res.rows);
             });
             this.$get("/recruitment/api/getRecruitmentPoster").then(res => {
-                this.resImg = this.VUE_APP_BASEURL + res;
-                //合成分享图
-                setTimeout(() => {
-                    html2canvas(this.$refs.box).then(canvas => {
-                        this.qrcodeImg = URL.createObjectURL(
-                            this.base64ToBlob(canvas.toDataURL())
-                        );
-                    });
-                }, 100);
+                console.log(res);
+                // this.resImg = this.VUE_APP_BASEURL + res;
+                this.resImg =
+                    "http://c7.aijinseliunian.xyz:5432/profile/upload/55e665ef-c41c-4d3b-898f-857c87e8f1e4.jpeg";
             });
-            this.$nextTick(() => {
-                var canvas1 = qrcanvas({
-                    data: decodeURIComponent("www.baidu.com"),
-                    size: 80
-                });
-                document.getElementById("qrcode").innerHTML = "";
-                document.getElementById("qrcode").appendChild(canvas1);
+            https://blog.csdn.net/zgh0711/article/details/90670390
+            https://www.jianshu.com/p/631f0b782713
+            let canvas = document.getElementById("qrCode-canvas");
+            QRCode.toCanvas(canvas, "www.baidu.com", error => {
+                if (error) {
+                    // console.log(error);
+                } else {
+                    canvas.style.width = ".8rem";
+                    canvas.style.height = ".8rem";
+                    let poster = document.getElementById("poster");
+                    document.getElementById("aaa").onload = () => {
+                        html2canvas(poster).then(canvas => {
+                            this.posterDataUrl = canvas.toDataURL();
+                            console.log(this.posterDataUrl);
+                        });
+                    };
+                }
             });
-        },
-        base64ToBlob(code) {
-            let parts = code.split(";base64,");
-            let contentType = parts[0].split(":")[1];
-            let raw = window.atob(parts[1]);
-            let rawLength = raw.length;
-
-            let uInt8Array = new Uint8Array(rawLength);
-
-            for (let i = 0; i < rawLength; ++i) {
-                uInt8Array[i] = raw.charCodeAt(i);
-            }
-            return new Blob([uInt8Array], { type: contentType });
         }
     },
-    watch: {
-        qrcodeImg() {
-            //监听到imgUrl有变化以后 说明新图片已经生成 隐藏DOM
-            this.$refs.box.style.display = "none";
-        }
-    },
-    created() {
+    mounted() {
         this.init();
     },
     components: {
@@ -286,16 +272,22 @@ export default {
                 }
             }
         }
-        .qrcode {
+        .qrWrap {
             width: 3rem;
-            height: 3rem;
+            height: auto;
             background: #f1f8ff;
             border-radius: 4px;
             overflow: hidden;
             margin: 0 auto;
+            position: relative;
             img {
-                width: inherit;
-                height: inherit;
+                width: 3rem;
+                height: 3rem;
+            }
+            .qr {
+                position: absolute;
+                left: 0.2rem;
+                bottom: 0.2rem;
             }
         }
     }

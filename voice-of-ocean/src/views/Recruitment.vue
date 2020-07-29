@@ -16,19 +16,11 @@
                 <van-field v-model="topContent.require" label="经验要求：" readonly :border="false" />
                 <van-field v-model="topContent.low" label="最低学历：" readonly :border="false" />
                 <van-field v-model="topContent.range" label="薪资范围：" readonly :border="false" />
-                <van-field
-                    v-model="topContent.des"
-                    type="textarea"
-                    rows="1"
-                    autosize
-                    label="职位描述："
-                    readonly
-                    :border="false"
-                />
+                <div class="cell-box" v-html="'职位描述：<br><br>'+topContent.des"></div>
             </van-cell-group>
             <div class="bg-line"></div>
         </div>
-        <van-cell-group class="bottom-gr">
+        <van-cell-group class="bottom-gr" :border="false">
             <van-field v-model="subForm.applyName" label="姓名" required placeholder="请输入" />
             <van-field v-model="subForm.applyAge" type="digit" label="年龄" placeholder="请输入" />
             <van-field
@@ -138,10 +130,7 @@ export default {
                 this.topContent.require = res.experienceRequired;
                 this.topContent.low = res.educationRequired;
                 this.topContent.range = res.salaryRange;
-                this.topContent.des = res.jobDescription.replace(
-                    /<\/?.+?\/?>/g,
-                    ""
-                );
+                this.topContent.des = res.jobDescription;
             });
         },
         init() {
@@ -189,6 +178,14 @@ export default {
             .van-cell__right-icon {
                 height: auto;
                 line-height: inherit;
+            }
+        }
+        .cell-box {
+            padding: 0.26rem 0;
+            font-size: 0.26rem;
+            &.quill-edit {
+                word-break: break-all;
+                word-wrap: break-word;
             }
         }
     }
