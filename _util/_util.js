@@ -2,6 +2,17 @@
 ;
 (function(win) {
 	win._util = {
+		//ajax
+		httpJ: function (options) {
+			$.ajax({
+				url: options.url,
+				type: 'POST',
+				contentType: "application/json",
+				dataType: 'json',
+				data: JSON.stringify(options.params),
+				success: options.callback
+			});
+		},
 		//放大图片
 		imgShow: function(src) {
 			var domId = "imgWrap" + new Date().getTime();
