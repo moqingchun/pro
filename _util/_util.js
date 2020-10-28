@@ -32,26 +32,38 @@
 		},
 		//可输入可选择的输入框
 		inputSelect: function(dom, str) {
-			var html ='<input type="text" class="form-control self_required" placeholder="请选择或者输入" required/><ul>'+str+'</ul>';
-			var style ='<style>.inputSel{position: relative;}.inputSel::after{content: "";width: 0;height: 0;border-top: 4px solid #333;border-left: 4px solid transparent;border-right: 4px solid transparent;position: absolute;right: 10px;top: 12px;}.inputSel input{width: 100%;}.inputSel ul{position: absolute;top: 105%;left: 0;width: 100%;background: #fff;z-index: 999;border: 1px solid #ccc;box-shadow: 0 0 6px #373333;display: none;max-height: 250px;overflow: auto;}.inputSel ul li{padding: 3px 20px;color: #777;cursor: pointer;}.inputSel ul li:hover{color: #333;background: #e1e3e9;}</style>';
+			var html ='<input type="text" class="form-control self_required" placeholder="请选择" required onkeyup="this.value = this.value.trim()"/><ul>'+str+'</ul><span>×</span>';
+			var style ='<style>.inputSel{position: relative;}.inputSel span{position: absolute;right: 6px;top: 1px;width: 14px;height: 32px;line-height: 32px;text-align: center;cursor: pointer;background: #fff;font-size: 18px;display: none}.inputSel input.form-control{width: 100%;padding: 6px 22px 6px 12px;}.inputSel ul{position: absolute;top: 105%;left: 0;width: 100%;background: #fff;z-index: 999;border: 1px solid #ccc;box-shadow: 0 0 6px #373333;display: none;max-height: 250px;overflow: auto;}.inputSel ul li{padding: 3px 20px;color: #777;cursor: pointer;list-style: none;}.inputSel ul li:hover{color: #333;background: #e1e3e9;}</style>';
 			$(dom).html(html);
 			$('head').append(style);
-			$(dom).find('input').on('click', function(event) {
-				event.stopPropagation();
-				$('.inputSel ul').hide();
-				$(dom).find('ul').toggle();
-			});
-			$(document).on('click', function() {
+			$(document).click(function() {
 				$(dom).find('ul').hide();
 			});
-			$(dom).find('li').on('click', function() {
-				$(dom).find('input').val($(this).html());
+			$(dom).find('input').click( function(event) {
+				event.stopPropagation();
+				$(this).next().toggle();
+			});
+			$(dom).find('li').click(function() {
+				$(this).parent().hide().prev().val($(this).html());
 			});
 			$(dom).find('input').on('input propertychange focus', function() {
 				var val = $(this).val();
-				$(dom).find('li').each(function() {
+				$(this).next().find('li').each(function() {
 					$(this).text().indexOf(val) === -1 ? $(this).hide() : $(this).show();
 				})
+			})
+			$(dom).find('input').hover(function () {
+				if($(this).val()){
+					$(this).next().next().show()
+				}
+			},function () {
+				$(this).next().next().hide()
+			})
+			$(dom).find('span').hover(function () {
+				$(this).show()
+			})
+			$(dom).find('span').click(function () {
+				$(this).prev().prev().val('')
 			})
 		},
 		//必填字段

@@ -1,34 +1,42 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>语音测试</title>
+		<script type="text/javascript"> 
+		var speaker = new window.SpeechSynthesisUtterance();
+		var speakTimer,
+		    stopTimer;
+ 
+		// 开始朗读
+		function speakText() {
+			var context = document.getElementById('ttsText');
+		    clearTimeout(speakTimer);
+		    window.speechSynthesis.cancel();
+		    speakTimer = setTimeout(function () {
+		    	speaker.volume = 0.9
+		        speaker.text = context.innerHTML;
+				console.log(1)
+		        window.speechSynthesis.speak(speaker);
+		    }, 200);
+		}
+ 
+		// 停止朗读
+		function stopSpeak() {
+		    clearTimeout(stopTimer);
+		    clearTimeout(speakTimer);
+		    stopTimer = setTimeout(function () {
+		        window.speechSynthesis.cancel();
+		    }, 20);
+		}
+		</script>
 	</head>
 	<body>
-		<div id="content" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+		<p id="ttsText">2020年的“五一”，注定是一个不平凡的节日。<br>新冠肺炎疫情突如其来，14亿人守望相助，交出全球战“疫”的“中国答卷”。<br>此时，春回大地，万物复苏。疫情的阴霾逐渐散去，田间地头、工厂车间，复工复产正在不断推进……<br>“五一”国际劳动节到来之际，让我们在这个春天，追寻奋斗者的脚步，聆听奋斗者的声音。</p>
+		<div>
+			<input type="button" id="start_btn" onclick="speakText()" value="播放">
+			<input type="button" id="cancel_btn" onclick="stopSpeak()" value="取消">
+		</div>
+		
 	</body>
-	
-	<script>
-		let num = 1;
-		let content = document.getElementById('content');
-	 
-		function count() {
-			content.innerHTML = num++;
-		};
-		function debounce(func, wait) {
-			let timer;
-			return function() {
-				console.log(this)
-			  let context = this; // 注意 this 指向div
-			  let args = arguments; // arguments中存着e
-				 
-			  if (timer) clearTimeout(timer);
-		 
-			  timer = setTimeout(() => {
-				func.apply(context, args)
-			  }, wait)
-			}
-		}
-		content.onmousemove = debounce(count,1000);
-	</script>
 </html>
