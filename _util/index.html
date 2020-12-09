@@ -3,29 +3,49 @@
 <head>
     <meta charset="UTF-8" />
     <title>Document</title>
+	<style type="text/css">
+		p{
+			width:200px;
+			height: 30px;
+			background:skyblue;
+			position: relative;
+		}
+		body{
+			height: 100%;
+			background: #000;
+		}
+	</style>
 </head>
 <body>
-	<p data-ss="123456"></p>
+	<p id="p"></p>
+	<p id="p1"></p>
+	<input type="" name="" id="" value="a" required/>
+	<input type="" name="" id="" value="" required/>
+	<button type="button">获取</button>
 </body>
 
 <script type="text/javascript" src="jquery.js"></script>
+<script src="_lbr.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $(function(){
-		console.log($('p').data('ss'))
-		var wsObj = new WebSocket("ws://127.0.0.1:8183");   //建立连接
-		    wsObj.onopen = function(){  //发送请求
-		        alert("open");
-		        wsObj.send("Hello WebSocket");
-		    };
-		    wsObj.onmessage = function(ev){  //获取后端响应
-		        alert(ev.data);
-		    };
-		    wsObj.onclose = function(ev){
-		        alert("close");
-		    };
-		    wsObj.onerror = function(ev){
-		        alert("error");
-		    };
+		_lbr.resetScreenSize()
+		// _lbr.inputSelect('#p','<li>3</li><li>4</li><li>5</li>')
+		// _lbr.inputSelect('#p1','<li>3</li><li>4</li><li>5</li>')
+		
+		// var wsObj = new WebSocket("ws://127.0.0.1:8183");   //建立连接
+		//     wsObj.onopen = function(){  //发送请求
+		//         alert("open");
+		//         wsObj.send("Hello WebSocket");
+		//     };
+		//     wsObj.onmessage = function(ev){  //获取后端响应
+		//         alert(ev.data);
+		//     };
+		//     wsObj.onclose = function(ev){
+		//         alert("close");
+		//     };
+		//     wsObj.onerror = function(ev){
+		//         alert("error");
+		//     };
 	})
 </script>
 </html>
