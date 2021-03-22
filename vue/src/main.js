@@ -4,7 +4,12 @@ import router from './router'
 import store from './store'
 import http, {
     get,
-    post
+	post,
+	postSpecial,
+	deleteR,
+	put,
+	putSpecial,
+	exportExc
 } from './service' //默认的不加花括号，非默认的加花括号，并且默认的default只能有一个
 import util from './assets/js/util.js'
 import ElementUI, { Message } from 'element-ui'
@@ -36,6 +41,11 @@ router.beforeEach((to, from, next) => {
 Vue.prototype.$http = http
 Vue.prototype.$get = get
 Vue.prototype.$post = post
+Vue.prototype.$posts = postSpecial
+Vue.prototype.$delete = deleteR
+Vue.prototype.$put = put
+Vue.prototype.$puts = putSpecial
+Vue.prototype.$exportExc = exportExc
 Vue.prototype.Util = util
 
 
