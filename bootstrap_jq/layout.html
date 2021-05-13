@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(function () {
+        var _a = {
+            init: function () {
+                this.jwtGet();
+            },
+            jwtGet: function () {
+                // $.ajax({
+                //     url: '/api/token/getToken',
+                //     type: 'GET',
+                //     dataType: 'json',
+                //     success: function (data) {
+                //         sessionStorage.setItem('token', data.jwt)
+                //         location.href = location.origin + '/home.html';
+                //     },
+                //     error: function (err) {
+                //         console.log(err)
+                //     }
+                // });
+                var jwt = _lbr.getQueryString('jwt');
+                if (!jwt) {
+                    location.href = location.origin + '/error.html'
+                    return;
+                }
+
+                $.ajax({
+                    url: '/api/token/checkJwt?jwt=' + jwt,
+                    type: 'POST',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        if (!data.data.checkResult) {
+                            location.href = location.origin + '/error.html';
+                            return;
+                        }
+
+                        sessionStorage.setItem('token', jwt);
+                        location.href = location.origin + '/home.html';
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                });
+            }
+        }
+        _a.init();
+    })
+</script>
+
+</html>

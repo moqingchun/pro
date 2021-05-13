@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title></title>
-	<style type="text/css">
-		body p{
-			width: 55px;
-			height: 30px;
-			font-size: 20px;
-			background: linear-gradient(360deg, #7927FB 0%, #33EDF6 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<style type="text/css">
+			body p {
+				width: 55px;
+				height: 30px;
+				font-size: 20px;
+				background: linear-gradient(360deg, #7927FB 0%, #33EDF6 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
 
+			}
+		</style>
+	</head>
+	<body>
+		<img src="a.jpg">
+		<button type="button">aaaa</button>
+	</body>
+	<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		Notification.requestPermission().then(function(result) {
+			if (result === 'granted') {
+				randomNotification();
+			}
+		});
+
+		function randomNotification() {
+			// var randomItem = Math.floor(Math.random()*games.length);
+			// var notifTitle = games[randomItem].name;
+			// var notifBody = 'Created by '+games[randomItem].author+'.';
+			// var notifImg = 'data/img/'+games[randomItem].slug+'.jpg';
+			// var options = {
+			//     body: notifBody,
+			//     icon: notifImg
+			// }
+			$.ajax({
+				url: '/api/authorization/signin',
+				type: 'post',
+				dataType: 'json',
+				data: JSON.stringify({
+					username: 'dujie',
+					signature: '19C8EBD392EEC4CCF6E3BD616406A59A',
+					verifycode: "",
+				}),
+				contentType: "application/json",
+				// async:false,
+				success: function(data) {
+					var notif = new Notification(data);
+				}
+			});
+			
+			setTimeout(randomNotification, 10000);
 		}
-	</style>
-</head>
-<body>
-	<img src="a.jpg" >
-	<button type="button">aaaa</button>
-</body>
-<script  type="text/javascript" charset="utf-8">
-	// document.querySelector('button').addEventListener('click', function(e) {
-	//     Notification.requestPermission().then(function(result) {
-	//         if(result === 'granted') {
-	//             randomNotification();
-	//         }
-	//     });
-	// });
-	// function randomNotification() {
-	//     // var randomItem = Math.floor(Math.random()*games.length);
-	//     // var notifTitle = games[randomItem].name;
-	//     // var notifBody = 'Created by '+games[randomItem].author+'.';
-	//     // var notifImg = 'data/img/'+games[randomItem].slug+'.jpg';
-	//     // var options = {
-	//     //     body: notifBody,
-	//     //     icon: notifImg
-	//     // }
-	//     var notif = new Notification('notifTitle');
-	//     // setTimeout(randomNotification, 30000);
-	// }
-	if('serviceWorker' in navigator) {
-	    navigator.serviceWorker.register('sw.js');
-	};
-</script>
+		// if('serviceWorker' in navigator) {
+		//     navigator.serviceWorker.register('sw.js');
+		// };
+	</script>
 </html>

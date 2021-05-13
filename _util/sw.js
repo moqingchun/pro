@@ -1,4 +1,4 @@
-var cacheName = 'cache_v1'
+var cacheName = 'cache_v1'//需要重新更换名字
 var fileLists = [
 	'test.html',
 	'a.jpg'

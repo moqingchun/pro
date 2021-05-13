@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #ccc;
+}
+
+input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+}
+
+input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #ccc;
+}
+
+button,
+button:focus {
+    outline: none !important;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: #ff5021;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background-color: #ff5021;
+    border-color: #ff5021;
+}
+
+.pagination>li>a,
+.pagination>li>span,
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: #ff5021;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+}
+
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover {
+    background-color: #ff5021 !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #ff5021 !important;
+    border: 1px solid #ff5021 !important;
+}
+
+.vehicle_body button:not(.dropdown-toggle):not(.close) {
+    background: transparent;
+    padding: 5px 20px;
+    border-radius: 4px;
+}
+
+input.input32 {
+    height: 32px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    outline: none;
+    text-indent: 10px;
+}
+
+textarea {
+    outline: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.tab-pane {
+    padding: 20px 0;
+}
+
+body {
+    background: #e8e8e8;
+}
+
+.vehicle_body {
+    padding: 14px 14px 20px 20px;
+}
+
+.vh_top {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.flex_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex_box .left {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.flex_box .left>div {
+    margin: 0 10px 10px 0;
+}
+
+.flex_box .right {
+    width: 226px;
+}
+
+.vh_bottom {
+    background: #fff;
+    padding: 20px;
+}
+
+.modal-body.nopadding {
+    padding: 0;
+}
+
+.modal-body h5 {
+    margin: 0 0 0 50px;
+    padding: 20px 0 16px;
+    font-size: 16px;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+}
+
+.step_flag {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ff5021;
+    border-radius: 50%;
+    color: #ff5021;
+    text-align: center;
+    line-height: 30px;
+    left: -35px;
+    top: 13px;
+}
+
+.modal-body .block_box {
+    margin: 0 30px;
+    padding: 20px 0;
+    border-left: 1px solid #cccccc;
+}
+
+.flex_row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.flex_row .flex_child {
+    flex: 1;
+    display: flex;
+}
+
+.flex_child .leable {
+    width: 164px;
+    line-height: 32px;
+    padding-left: 16px;
+}
+
+.flex_child .choose_box {
+    flex: 1;
+}
+
+.flex_child .radio_box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.choose_box input,
+.choose_box .bootstrap-select,
+.choose_box textarea {
+    width: 204px !important;
+}
+
+.sub_body {
+    margin: 0 20px 20px;
+    border: 1px solid #cccccc;
+}
+
+.sub_body .title {
+    line-height: 30px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #cccccc;
+    padding-left: 20px;
+}
+
+.sub_body .content {
+    padding: 10px 20px 0;
+}
+
+.flex_box1 {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.flex_box1 .lable {
+    width: 154px;
+}
+
+.flex_box1 .flex_sup {
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.file_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.file_box {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    /* overflow: hidden; */
+    margin-top: 36px;
+}
+
+.pic_title {
+    position: absolute;
+    width: 100%;
+    line-height: 24px;
+    text-align: center;
+    left: 0;
+    top: -24px;
+    background: #ff5021;
+    color: #ffffff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.file_body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+}
+
+.file_mark {
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file_mark .glyphicon {
+    font-size: 18px;
+}
+
+.fileimg_box {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+    z-index: 3;
+}
+
+.file_img {
+    width: 100%;
+    height: 100%;
+}
+
+.preview_del {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+
+.fileimg_box:hover .preview_del {
+    display: flex;
+}
+
+.preview_del .preview,
+.preview_del .del {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.flex_main {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.flex_main .leable {
+    width: 194px;
+    padding-left: 16px;
+    line-height: 32px;
+}
+
+.flex_main .choose_box {
+    width: 200px;
+}
+
+.flex_main .markj {
+    color: #ff5021;
+    padding-left: 8px;
+    font-size: 12px;
+}
+
+.introdution .title {
+    font-weight: bold;
+}
+
+.introdution img {
+    width: 100%;
+}
+
+.requiredL {
+    position: relative;
+}
+
+.requiredL::before {
+    content: '*';
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    color: #ff5021;
+    font-size: 22px;
+}

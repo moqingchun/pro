@@ -506,20 +506,25 @@
 			}, 1000);
 		},
 		//格式化日期
-		timeFormate: function(timeStamp, sign) {
-			var date = timeStamp.toString(10).length === 10 ? new Date(timeStamp * 1000) : new Date(timeStamp),
-				year = date.getFullYear(),
-				month = date.getMonth() + 1,
-				day = date.getDate(),
-				hour = date.getHours(),
-				minute = date.getMinutes(),
-				second = date.getSeconds(),
-				formatNumber = function(n) {
-					n = n.toString()
-					return n[1] ? n : '0' + n
-				}
-			return [year, month, day].map(formatNumber).join(sign) + ' ' + [hour, minute, second].map(formatNumber).join(':')
-		},
+		timeFormate: timeFormate: function (datetime, formatStr) {
+            var dat = datetime;
+            var str = formatStr;
+            var Week = ['日', '一', '二', '三', '四', '五', '六'];
+            str = str.replace(/yyyy|YYYY/, dat.getFullYear());
+            str = str.replace(/yy|YY/, (dat.getYear() % 100) > 9 ? (dat.getYear() % 100).toString() : '0' + (dat.getYear() % 100));
+            str = str.replace(/MM/, dat.getMonth() > 9 ? (dat.getMonth() + 1).toString() : '0' + (dat.getMonth() + 1));
+            str = str.replace(/M/g, (dat.getMonth() + 1));
+            str = str.replace(/w|W/g, Week[dat.getDay()]);
+            str = str.replace(/dd|DD/, dat.getDate() > 9 ? dat.getDate().toString() : '0' + dat.getDate());
+            str = str.replace(/d|D/g, dat.getDate());
+            str = str.replace(/hh|HH/, dat.getHours() > 9 ? dat.getHours().toString() : '0' + dat.getHours());
+            str = str.replace(/h|H/g, dat.getHours());
+            str = str.replace(/mm/, dat.getMinutes() > 9 ? dat.getMinutes().toString() : '0' + dat.getMinutes());
+            str = str.replace(/m/g, dat.getMinutes());
+            str = str.replace(/ss|SS/, dat.getSeconds() > 9 ? dat.getSeconds().toString() : '0' + dat.getSeconds());
+            str = str.replace(/s|S/g, dat.getSeconds());
+            return str
+        },
 		//限制输入框只能输入数字和固定位数小数
 		checkNumber: function(obj) {
 			obj.value = obj.value.replace(/[^\d.]/g, "") //清除“数字”和“.”以外的字符

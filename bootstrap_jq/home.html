@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号令</title>
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid body_content">
+        <ul class="menu_trees">
+            <li>
+                <p class="menu_title">
+                    <i class="glyphicon glyphicon-book icon_1"></i>
+                    <span>车辆档案</span>
+                    <i class="glyphicon glyphicon-menu-down icon_2" cn="1"></i>
+                </p>
+                <ul class="menu_second">
+                    <li class="active" url="./pages/vehicleinfo.html">车辆基础信息</li>
+                    <li url="./pages/prepaire.html">维护和修理</li>
+                    <li url="./pages/level_jugement.html">等级评定</li>
+                    <li url="./pages/partschange.html">主要零部件更换</li>
+                    <li url="./pages/viheclechange.html">车辆变更</li>
+                    <li url="./pages/tranvelm.html">行驶里程</li>
+                    <li url="./pages/trouble.html">机损事故</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="main_content">
+            <iframe id="iframeWrap" width="100%" height="100%" src="./pages/vehicleinfo.html" frameborder="no"
+                marginwidth="0" marginheight="0"></iframe>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/routes.js"></script>
+
+</html>

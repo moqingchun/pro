@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../js/bootstrap-select/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-table/bootstrap-table-fixed-columns.min.css">
+    <link rel="stylesheet" href="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/vehicle_info.css">
+</head>
+
+<body>
+    <div class="vehicle_body">
+        <div class="vh_top">
+            <div class="flex_box">
+                <div class="left">
+                    <div>
+                        <span>车牌号:</span>
+                        <input class="input32" type="text" id="license">
+                    </div>
+                    <div>
+                        <span>颜色:</span>
+                        <select class="selectpicker" id="licensecolor">
+                            <option value="">全部</option>
+                            <option value="黄">黄</option>
+                            <option value="蓝">蓝</option>
+                            <option value="黑">黑</option>
+                            <option value="白">白</option>
+                            <option value="绿">绿</option>
+                            <option value="黄绿">黄绿</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span>车辆使用性质:</span>
+                        <select class="selectpicker" id="syxz" data-live-search="true">
+                            <!-- <option>Relish</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <span>二维周期状态:</span>
+                        <select class="selectpicker" id="cyclesettingstatus">
+                            <option value="">全部</option>
+                            <option value="1">已设定</option>
+                            <option value="0">未设定</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span>建档状态:</span>
+                        <select class="selectpicker" id="filingstatus">
+                            <option value="">全部</option>
+                            <option value="1">完成</option>
+                            <option value="0">未完成</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="right">
+                    <button type="button" class="btn btn-default" id="reset">重置</button>
+                    <button type="button" class="btn btn-primary" id="searchBtn">查询</button>
+                    <button type="button" class="btn btn-primary" id="addBtn">新增</button>
+                </div>
+            </div>
+        </div>
+        <div class="vh_bottom">
+            <table id="table" style="table-layout:fixed;word-break:break-all;"></table>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document" style="width: 800px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title addOrEdit"></h4>
+                    </div>
+                    <div class="modal-body nopadding" id="formBox">
+                        <h5>基本信息
+                            <div class="step_flag">1</div>
+                        </h5>
+                        <div class="block_box check_option1">
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable requiredL">车牌号:</div>
+                                    <div class="choose_box">
+                                        <input id="licenseM" class="input32 requiredS" type="text" required
+                                            oninput="this.value=this.value.substring(0,8)">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable requiredL">车牌颜色:</div>
+                                    <div class="choose_box">
+                                        <select id="licensecolorM" class="selectpicker requiredS" required>
+                                            <option value="">--</option>
+                                            <option value="黄">黄</option>
+                                            <option value="蓝">蓝</option>
+                                            <option value="黑">黑</option>
+                                            <option value="白">白</option>
+                                            <option value="绿">绿</option>
+                                            <option value="黄绿">黄绿</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车辆使用性质:</div>
+                                    <div class="choose_box">
+                                        <select id="syxzmodal" class="selectpicker" data-live-search="true">
+                                            <!-- <option>Mustard</option> -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">车辆运营状态:</div>
+                                    <div class="choose_box">
+                                        <input id="operationstatusM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车身颜色:</div>
+                                    <div class="choose_box">
+                                        <input id="vehiclebodycolorM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">道路运输证号:</div>
+                                    <div class="choose_box">
+                                        <input id="roadtransportnumberM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable requiredL">VIN（或车架）号:</div>
+                                    <div class="choose_box">
+                                        <input id="framenumberM" class="input32 requiredS" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">道路运输证注册日期:</div>
+                                    <div class="choose_box">
+                                        <input id="roadtransportregdateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车辆出厂日期:</div>
+                                    <div class="choose_box">
+                                        <input id="productiondateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">道路运输证发证日期:</div>
+                                    <div class="choose_box">
+                                        <input id="roadtransportgetdateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">启用日期:</div>
+                                    <div class="choose_box">
+                                        <input id="enabledateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">道路运输证审验有效期:</div>
+                                    <div class="choose_box">
+                                        <input id="roadtransportvaliddateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">强制报废日期:</div>
+                                    <div class="choose_box">
+                                        <input id="forcedretirementdateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">行驶证注册日期:</div>
+                                    <div class="choose_box">
+                                        <input id="travellicenseregdateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">联系人:</div>
+                                    <div class="choose_box">
+                                        <input id="contactsM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">行驶证发证日期:</div>
+                                    <div class="choose_box">
+                                        <input id="travellicensegetdateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">联系手机:</div>
+                                    <div class="choose_box">
+                                        <input id="contactsphoneM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">行驶证检验有效期:</div>
+                                    <div class="choose_box">
+                                        <input id="travellicensevaliddateM" class="input32 datetimepicker" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>营运信息
+                            <div class="step_flag">2</div>
+                        </h5>
+                        <div class="block_box check_option">
+                            <div class="sub_body">
+                                <div class="title">经营范围</div>
+                                <div class="content" id="range_box">
+
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车主:</div>
+                                    <div class="choose_box">
+                                        <input id="vehicleownercontactsM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">车主联系电话:</div>
+                                    <div class="choose_box">
+                                        <input id="vehicleownercontactsphoneM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车辆类型 :</div>
+                                    <div class="choose_box">
+                                        <select id="vehicletype" class="selectpicker" data-live-search="true">
+                                            <!-- <option>Mustard</option> -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">运输介质:</div>
+                                    <div class="choose_box">
+                                        <input id="transportmediumM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">客车等级:</div>
+                                    <div class="choose_box">
+                                        <select id="passengerrankM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="5">高三级</option>
+                                            <option value="4">高二级</option>
+                                            <option value="3">高一级</option>
+                                            <option value="2">中级</option>
+                                            <option value="1">普通级</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">核定载客人:</div>
+                                    <div class="choose_box">
+                                        <input id="checkloadcustomerM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">集装箱适载种类/数量:</div>
+                                    <div class="choose_box">
+                                        <input id="containertypequantityM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">装载危险品品名:</div>
+                                    <div class="choose_box">
+                                        <input id="loadofdangerousgoodsnameM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">箱内最低温度:</div>
+                                    <div class="choose_box">
+                                        <select id="refrigeratedtruckM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value=">0℃">>0℃</option>
+                                            <option value="≤0℃">≤0℃</option>
+                                            <option value="≤-10℃">≤-10℃</option>
+                                            <option value="≤-18℃">≤-18℃</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">冷机数:</div>
+                                    <div class="choose_box">
+                                        <select id="thenumberofrefrigeratorM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="1">一个</option>
+                                            <option value="2">二个</option>
+                                            <option value="3">三个</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">罐体有效容积:</div>
+                                    <div class="choose_box">
+                                        <input id="effectivevolumeoftankM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">槽罐材质:</div>
+                                    <div class="choose_box">
+                                        <input id="tankmaterialM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>技术参数
+                            <div class="step_flag">3</div>
+                        </h5>
+                        <div class="block_box check_option">
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">制造厂名:</div>
+                                    <div class="choose_box">
+                                        <select id="productnameM" class="selectpicker" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">车辆品牌 :</div>
+                                    <div class="choose_box">
+                                        <select id="vehiclebrandM" class="selectpicker" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">车辆型号:</div>
+                                    <div class="choose_box">
+                                        <select id="vehiclemodelM" class="selectpicker" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">产地类别(国产/进口):</div>
+                                    <div class="choose_box">
+                                        <select id="domesticimportM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="0">国产</option>
+                                            <option value="1">进口</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">外廓尺寸长(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="gabaritsizelenghtM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">行车制动方式:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="trafficbrakingmode" value="0"> 气
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="trafficbrakingmode" value="1"> 液
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="trafficbrakingmode" value="2"> 气液
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">外廓尺寸宽(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="gabaritsizewidthM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">制动器形式前轮:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="frontwheel" value="0"> 盘
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="frontwheel" value="1"> 鼓式
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">外廓尺寸高(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="gabaritsizeheightM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">制动器形式后轮:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="rearwheel" value="0"> 盘
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="rearwheel" value="1"> 鼓式
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">内部尺寸长(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="packboxsizelengthM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class=" flex_child">
+                                    <div class="leable">制动防抱死系统:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="holdbreakdevice" value="1"> 有
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="holdbreakdevice" value="0"> 无
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">内部尺寸宽(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="packboxsizewidthM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">变速器形式:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="transmissionform" value="0"> 无
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="transmissionform" value="1"> 手自一体
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="transmissionform" value="2"> 手动
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="transmissionform" value="3"> 自动
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">内部尺寸高(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="packboxinsizeheightM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">缓速器:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="retarder" value="1"> 有
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="retarder" value="0"> 无
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">准牵引质量(单位:kg):</div>
+                                    <div class="choose_box">
+                                        <input id="quasitotalmassM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">空调系统:</div>
+                                    <div class="radio_box">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="airconditioningsystem" value="1"> 有
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="airconditioningsystem" value="0"> 无
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">总质量(单位:kg):</div>
+                                    <div class="choose_box">
+                                        <input id="massM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">轮胎数:</div>
+                                    <div class="choose_box">
+                                        <input id="vehicletyrecountM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">整备质量(单位:kg):</div>
+                                    <div class="choose_box">
+                                        <input id="curbweightM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">轮胎种类:</div>
+                                    <div class="choose_box">
+                                        <select id="vehicletyretypeM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="A">A类轮胎</option>
+                                            <option value="B">B类轮胎</option>
+                                            <option value="C">C类轮胎</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">额定载质量(单位:kg):</div>
+                                    <div class="choose_box">
+                                        <input id="qcheckloadmassM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">转向形式:</div>
+                                    <div class="choose_box">
+                                        <input id="turnshapeM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">前后轮车距:</div>
+                                    <div class="choose_box">
+                                        <input id="frontbehindvehicledistanceM" class="input32" type="text"
+                                            placeholder="整数或小数" oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">轴距(单位:mm):</div>
+                                    <div class="choose_box">
+                                        <input id="wheelbaseM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">钢板弹簧片数:</div>
+                                    <div class="choose_box">
+                                        <input id="rearaxleleafcountM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">轴数:</div>
+                                    <div class="choose_box">
+                                        <input id="axlenumberM" class="input32" type="text" placeholder="整数"
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">底盘型号:</div>
+                                    <div class="choose_box">
+                                        <input id="chassismodelM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">悬架型式:</div>
+                                    <div class="choose_box">
+                                        <input id="suapensiontypeM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">发动机型号:</div>
+                                    <div class="choose_box">
+                                        <input id="enginetypenumberM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">排放标准:</div>
+                                    <div class="choose_box">
+                                        <select id="emissionstandardM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="国三">国三</option>
+                                            <option value="国四">国四</option>
+                                            <option value="国五">国五</option>
+                                            <option value="国六">国六</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">发动机号:</div>
+                                    <div class="choose_box">
+                                        <input id="enginenumberM" class="input32" type="text">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">动力类型:</div>
+                                    <div class="choose_box">
+                                        <select id="fueltypeM" class="selectpicker">
+                                            <option value="">---</option>
+                                            <option value="LNG">LNG</option>
+                                            <option value="CNG">CNG</option>
+                                            <option value="LPG">LPG</option>
+                                            <option value="汽油">汽油</option>
+                                            <option value="柴油">柴油</option>
+                                            <option value="混合">混合</option>
+                                            <option value="电动">电动</option>
+                                            <option value="天然气">天然气</option>
+                                            <option value="液化气">液化气</option>
+                                            <option value="双燃料">双燃料</option>
+                                            <option value="纯动力">纯动力</option>
+                                            <option value="其他">其他</option>
+                                            <option value="无燃料">无燃料</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">发动机排量(单位:L):</div>
+                                    <div class="choose_box">
+                                        <input id="displacementpowerM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">电池类型:</div>
+                                    <div class="choose_box">
+                                        <input id="batterytypeM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">发动机净功率(单位:kw):</div>
+                                    <div class="choose_box">
+                                        <input id="enginenetpowerM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                    <div class="leable">驱动电机型号:</div>
+                                    <div class="choose_box">
+                                        <input id="drivemotormodelM" class="input32" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex_row">
+                                <div class="flex_child">
+                                    <div class="leable">电机功率:</div>
+                                    <div class="choose_box">
+                                        <input id="motorpowerM" class="input32" type="text" placeholder="整数或小数"
+                                            oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                </div>
+                                <div class="flex_child">
+                                </div>
+                            </div>
+                        </div>
+                        <h5>照片信息
+                            <div class="step_flag">4</div>
+                        </h5>
+                        <div class="block_box file_container check_option" style="border-left: none;">
+                            <div class="file_box" cn='1'>
+                                <div class="pic_title">行驶证照片</div>
+                                <input class="file_body" type="file"
+                                    accept="image/jpeg,image/png,image/jpg,image/gif,image/bmp">
+                                <div class="file_mark">
+                                    <p class="glyphicon glyphicon-picture"></p>
+                                    <p>点击上传行驶证照片</p>
+                                </div>
+                                <div class="fileimg_box">
+                                    <div class="preview_del">
+                                        <p class="preview">预览</p>
+                                        <p class="del">删除</p>
+                                    </div>
+                                    <img class="file_img" src="" alt="" id="img1">
+                                </div>
+                            </div>
+                            <div class="file_box" cn='2'>
+                                <div class="pic_title">道路运输证照片</div>
+                                <input class="file_body" type="file"
+                                    accept="image/jpeg,image/png,image/jpg,image/gif,image/bmp">
+                                <div class="file_mark">
+                                    <p class="glyphicon glyphicon-picture"></p>
+                                    <p>点击上传道路运输证照片</p>
+                                </div>
+                                <div class="fileimg_box">
+                                    <div class="preview_del">
+                                        <p class="preview">预览</p>
+                                        <p class="del">删除</p>
+                                    </div>
+                                    <img class="file_img" src="" alt="" id="img2">
+                                </div>
+                            </div>
+                            <div class="file_box" cn='3'>
+                                <div class="pic_title">车身照片</div>
+                                <input class="file_body" type="file"
+                                    accept="image/jpeg,image/png,image/jpg,image/gif,image/bmp">
+                                <div class="file_mark">
+                                    <p class="glyphicon glyphicon-picture"></p>
+                                    <p>点击上传车身照片</p>
+                                </div>
+                                <div class="fileimg_box">
+                                    <div class="preview_del" id>
+                                        <p class="preview">预览</p>
+                                        <p class="del">删除</p>
+                                    </div>
+                                    <img class="file_img" src="" alt="" id="img3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="saveBtn">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="erweiModal" tabindex="-1" role="dialog" data-backdrop="static"
+            data-keyboard="false">
+            <div class="modal-dialog" role="document" style="width: 800px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">车辆二维周期设定</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#set" aria-controls="set" role="tab"
+                                    data-toggle="tab">二维周期设定</a></li>
+                            <li role="presentation"><a href="#history" aria-controls="history" role="tab"
+                                    data-toggle="tab">周期设定历史</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="set">
+                                <div class="flex_main">
+                                    <div class="leable requiredL">车牌号:</div>
+                                    <div class="choose_box">
+                                        <input class="input32 requiredS" type="text" id="licenseS" required disabled>
+                                    </div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">车牌颜色:</div>
+                                    <div class="choose_box">
+                                        <!-- <select class="selectpicker requiredS" id="licensecolorS" required disabled>
+                                            <option value="">---</option>
+                                            <option value="黄">黄</option>
+                                            <option value="蓝">蓝</option>
+                                            <option value="黑">黑</option>
+                                            <option value="白">白</option>
+                                            <option value="绿">绿</option>
+                                            <option value="黄绿">黄绿</option>
+                                        </select> -->
+                                        <input class="input32 requiredS" type="text" id="licensecolorS" required
+                                            disabled>
+                                    </div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">二级维护里程初始值:</div>
+                                    <div class="choose_box">
+                                        <input class="input32 requiredS" type="text" id="lev2maintainmileageS"
+                                            placeholder="整数" required
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                    <div>（公里）</div>
+                                    <div class="markj">注:1、最后一次二维出厂公里数;2、新车0公里</div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">二级维护日期初始值:</div>
+                                    <div class="choose_box">
+                                        <input class="input32 datetimepicker requiredS" type="text"
+                                            id="lev2maintaindateS" required>
+                                    </div>
+                                    <div class="markj">
+                                        注:1、最后一次二维日期;2、新车首次办证日期
+                                    </div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">车辆维护保养周期（日期）:</div>
+                                    <div class="choose_box">
+                                        <input class="input32 requiredS" type="text" id="dayS" placeholder="整数" required
+                                            oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                    </div>
+                                    <div>（天/次）</div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">车辆维护保养周期（里程）:</div>
+                                    <div class="choose_box">
+                                        <input class="input32 requiredS" type="text" id="mileageS" placeholder="整数或一位小数"
+                                            required oninput="this.value=this.value.replace(/[^\d.]/g,'')">
+                                    </div>
+                                    <div>（万公里/次）</div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable requiredL">依据:</div>
+                                    <div class="choose_box">
+                                        <textarea class="requiredS" rows="3" id="fileaccordingS" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="flex_main">
+                                    <div class="leable">备注:</div>
+                                    <div class="choose_box">
+                                        <textarea rows="3" id="noteS"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="introdution">
+                                    <div class="title">二维周期设定说明：</div>
+                                    <div>
+                                        道路运输经营者应当依据国家有关标准和车辆维修手册、使用说明书等，结合车辆类别、车辆运行状况、行驶里程、
+                                        道路条件、使用年限等因素，自行确定车辆维护周期，确保车辆正常维护。严禁不制定维护周期和无依据制定车辆
+                                        二级维护周期。一经确认后，请按制定的维护周期对车辆进行维护。
+                                    </div>
+
+                                    <div>
+                                        下表为《汽车维护、检测、诊断技术规范》（GB/T18344）推荐的道路运输车辆一级维护、二级维护周期，以供参考。
+                                    </div>
+                                    <img src="../images/oneOrTwoMaintenanceCyc.png" alt="">
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="history">
+                                <table id="erweiTable" style="table-layout:fixed;word-break:break-all;"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="erweiSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script src="../js/bootstrap/js/bootstrap.min.js">
+</script>
+<script src="../js/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../js/bootstrap-table/bootstrap-table-fixed-columns.min.js">
+</script>
+<script src="../js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/ajaxset.js"></script>
+<script src="../js/vehicleinfo.js"></script>
+
+</html>
