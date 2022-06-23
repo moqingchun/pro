@@ -1,0 +1,15 @@
+<!--components/toUpMark/toUpMark.wxml-->
+<view class="toupmark_wrap" hidden="{{!show}}">
+    <view class="toupmark">
+        <view class="title">
+            <text>{{title}}</text>
+            <text class="iconfont icon-cha" bindtap="close"></text>
+        </view>
+        <view>
+            <slot name="content"></slot>
+        </view>
+        <view>
+            <slot name="footer"></slot>
+        </view>
+    </view>
+</view>

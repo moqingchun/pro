@@ -1,0 +1,12 @@
+<!--pages/warningDetail/index.wxml-->
+<view class="wrap">
+    <view class="v_block">
+        <view>车牌号：{{info.license}}</view>
+        <view>报警时间: {{info.alarmTime}}</view>
+        <view>车速: {{info.speed*3.6}} 公里/小时</view>
+        <view>位置：{{info.location}}</view>
+        <!-- <view class="v_btnwrap">
+            <view class="v_button">查看轨迹</view>
+        </view> -->
+    </view>
+</view>

@@ -1,0 +1,18 @@
+/* components/tabs/tabs.wxss */
+.home_tabs{
+    display: flex;
+    justify-content: space-around;
+}
+.home_tabs view{
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 0 12rpx;
+    box-sizing: border-box;
+    font-size: 32rpx;
+    color: #333333;
+}
+.home_tabs view.active{
+    border-bottom:6rpx solid #1890FF;
+    font-size: 40rpx;
+    color: #1890FF;
+}

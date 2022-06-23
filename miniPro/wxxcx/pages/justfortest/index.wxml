@@ -1,0 +1,8 @@
+
+<view class="section">
+  <picker mode="date" value="{{date}}" end="{{endRange}}" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+</view>

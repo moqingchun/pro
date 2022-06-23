@@ -1,0 +1,161 @@
+{
+    "setting": {},
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "",
+                    "pathName": "pages/locationPermission/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ride/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/rideList/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/my/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/rideGuide/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketsBooking/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/evaluation/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/myEvaluations/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/bingEntp/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ehztclogin/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/dzbwxlogin/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketDetail/index",
+                    "query": "id=202239A3204NNC67MHA",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketsList/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketsList/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketCode/index",
+                    "query": "scheduleid=20223AA4941QBP4DMAA",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/justfortest/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/messageList/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketsBooking/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketsBatchBuy/index",
+                    "query": "o=%7B%22schedule_id%22%3A%2220224KA0916CM8CTM2A%22%2C%22veh_id%22%3A%2220221LB1947X5D8HAKA%22%2C%22schedule_name%22%3A%224-1920%22%2C%22start_time%22%3A%222022-04-19%2020%3A00%22%2C%22path_id%22%3A%2220224DD3848DVRN4XMA%22%2C%22path_name%22%3A%220%E5%85%83%E8%B4%AD%E9%A2%84%E7%BA%A6%E7%BA%BF%E8%B7%AF%22%2C%22business_id%22%3A%2220221LD30350CD8HC7A%22%2C%22business_name%22%3A%22%E5%B7%A5%E4%BD%9C%E6%97%A5%22%2C%22fee%22%3A%220.00%22%2C%22sites%22%3A%5B%7B%22id%22%3A%2220224DD41043KRN4XNA%22%2C%22pathId%22%3A%2220224DD3848DVRN4XMA%22%2C%22name%22%3A%22%E6%B5%A6%E4%B8%9C%E5%9F%BA%E5%9C%B0%22%2C%22point%22%3A%22%E6%B5%A6%E4%B8%9C%E4%B8%93%E7%BA%BF%22%2C%22longitude%22%3A121.778042%2C%22latitude%22%3A31.168196%2C%22graphId%22%3A%2220221CA1035CXT2PDJA%22%2C%22type%22%3A1%2C%22orderNo%22%3A1%2C%22createTime%22%3A%222022-04-19%2010%3A09%3A16%22%2C%22creator%22%3A%22sysadmin%22%2C%22estimatetime%22%3Anull%2C%22estimatetimeDesc%22%3Anull%2C%22date%22%3A%222022-04-19%2020%3A00%22%2C%22url%22%3A%22https%3A%2F%2Fmon.china317.com%2FfileUrl%2Fkeyun%2Fbackend%2Fuploadfile%2Fpathsite%2F20221CA1035CXT2PDJA.jpg%22%7D%2C%7B%22id%22%3A%2220224DD41044CRN4XPA%22%2C%22pathId%22%3A%2220224DD3848DVRN4XMA%22%2C%22name%22%3A%22%E9%87%91%E6%B5%B7%E8%B7%AF%22%2C%22point%22%3A%22%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E9%87%91%E6%A1%A5%E9%95%87%E6%A6%95%E6%A1%A5%E8%B7%AF%E6%A6%95%E6%A1%A5%E8%B7%AF-%E9%81%93%E8%B7%AF%E5%81%9C%E8%BD%A6%E4%BD%8D%22%2C%22longitude%22%3A121.632886%2C%22latitude%22%3A31.267078%2C%22graphId%22%3A%2220221LJ5654C0W9GE2A%22%2C%22type%22%3A0%2C%22orderNo%22%3A2%2C%22createTime%22%3A%222022-04-19%2010%3A09%3A16%22%2C%22creator%22%3A%22sysadmin%22%2C%22estimatetime%22%3Anull%2C%22estimatetimeDesc%22%3Anull%2C%22date%22%3A%222022-04-19%2020%3A26%22%2C%22url%22%3A%22https%3A%2F%2Fmon.china317.com%2FfileUrl%2Fkeyun%2Fbackend%2Fuploadfile%2Fpathsite%2F20221LJ5654C0W9GE2A.png%22%7D%2C%7B%22id%22%3A%2220224DD410466RN4XQA%22%2C%22pathId%22%3A%2220224DD3848DVRN4XMA%22%2C%22name%22%3A%22%E4%B8%9C%E8%88%AA%E4%B9%8B%E5%AE%B6%22%2C%22point%22%3A%22%E7%88%B1%E5%8D%9A%E7%BA%BF%22%2C%22longitude%22%3A121.330434%2C%22latitude%22%3A31.185632%2C%22graphId%22%3A%2220221CA1035CXT2PDYA%22%2C%22type%22%3A2%2C%22orderNo%22%3A3%2C%22createTime%22%3A%222022-04-19%2010%3A09%3A16%22%2C%22creator%22%3A%22sysadmin%22%2C%22estimatetime%22%3Anull%2C%22estimatetimeDesc%22%3Anull%2C%22date%22%3A%222022-04-19%2021%3A04%22%2C%22url%22%3A%22https%3A%2F%2Fmon.china317.com%2FfileUrl%2Fkeyun%2Fbackend%2Fuploadfile%2Fpathsite%2F20221CA1035CXT2PDYA.jpg%22%7D%5D%2C%22licensecard%22%3A%22%E6%B2%AAFH1537%22%2C%22batch%22%3Atrue%2C%22startTime%22%3A%222022-04-19%20%E5%91%A8%E4%BA%8C%22%7D&start=%7B%22id%22%3A%2220224DD41043KRN4XNA%22%2C%22pathId%22%3A%2220224DD3848DVRN4XMA%22%2C%22name%22%3A%22%E6%B5%A6%E4%B8%9C%E5%9F%BA%E5%9C%B0%22%2C%22point%22%3A%22%E6%B5%A6%E4%B8%9C%E4%B8%93%E7%BA%BF%22%2C%22longitude%22%3A121.778042%2C%22latitude%22%3A31.168196%2C%22graphId%22%3A%2220221CA1035CXT2PDJA%22%2C%22type%22%3A1%2C%22orderNo%22%3A1%2C%22createTime%22%3A%222022-04-19%2010%3A09%3A16%22%2C%22creator%22%3A%22sysadmin%22%2C%22estimatetime%22%3Anull%2C%22estimatetimeDesc%22%3Anull%2C%22date%22%3A%222022-04-19%2020%3A00%22%2C%22url%22%3A%22https%3A%2F%2Fmon.china317.com%2FfileUrl%2Fkeyun%2Fbackend%2Fuploadfile%2Fpathsite%2F20221CA1035CXT2PDJA.jpg%22%7D&end=%5Bobject%20Object%5D",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketDetail/index",
+                    "query": "id=20224KA0916GA8CTM3A",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketInvoice/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ticketInvoiceHistory/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/enterKunApply/index",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/examplefortest/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    },
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+}

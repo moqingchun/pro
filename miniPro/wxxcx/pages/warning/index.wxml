@@ -1,0 +1,16 @@
+<!--pages/warning/index.wxml-->
+<view class="wrap">
+    <view class="v_block" wx:for="{{lists}}" wx:key="index" data-item="{{item}}" bindtap="gotoDetail">
+        <view class="v_date">
+            {{item.begin_time}}
+        </view>
+        <view class="v_cont">
+            {{item.alarm_type=='1'?'监测到入昆期间滞留超时报警，请注意规范驾驶':item.alarm_type=='2'?'监测到入昆期间异常停车报警，请注意规范驾驶':'监测到入昆期间人车分离报警，请注意规范驾驶'}}
+        </view>
+    </view>
+    <view class="v_tips" wx:if="{{!lists.length&&!flag}}">
+        暂无数据
+    </view>
+    <view class="v_tips" wx:if="{{loading}}">努力加载中...</view>
+    <view class="v_tips" wx:if="{{lists.length&&!flag}}">没有更多数据了哦</view>
+</view>

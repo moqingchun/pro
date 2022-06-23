@@ -1,0 +1,58 @@
+<!--pages/my/index.wxml-->
+<view class="wrap">
+    <view class="view_block">
+        <view class="view_user" bindtap="{{showUser?'':'getUserInfos'}}">
+            <image class="view_headimg" src="{{head_image}}"></image>
+            <text class="view_nickname">{{nick_name}}</text>
+        </view>
+    </view>
+    <view class="view_block">
+        <view class="view_title">
+            个人信息
+        </view>
+        <view class="view_option">
+            <view class="view_optionleft">
+                <image src="/assets/images/all/my_phone.png" mode="widthFix"></image>
+                <text>手机号：{{phone}}</text>
+            </view>
+        </view>
+        <view class="view_option" bindtap="getLicense">
+            <view class="view_optionleft">
+                <image src="/assets/images/all/my_carcode.png" mode="widthFix"></image>
+                <text>车牌号：{{license}}</text>
+            </view>
+            <view class="view_optionright">
+                <text>点击修改</text>
+                <text class="iconfont icon-31fanhui2"></text>
+            </view>
+        </view>
+        <picker bindchange="bindCpysPickerChange" value="{{licenseColorIndex}}" range="{{licenseColorArray}}">
+            <view class="view_option">
+                <view class="view_optionleft">
+                    <image src="/assets/images/all/my_carcolor.png" mode="widthFix"></image>
+                    <text>车牌颜色：{{licenseColorArray[licenseColorIndex]}}</text>
+                </view>
+                <view class="view_optionright">
+                    <text>点击修改</text>
+                    <text class="iconfont icon-31fanhui2"></text>
+                </view>
+            </view>
+        </picker>
+    </view>
+    <!-- <view class="view_block">
+        <view class="view_title">
+            其他功能
+        </view>
+        <view class="view_option">
+            <view class="view_optionleft">
+                <image src="/assets/images/all/my_history.png" mode="widthFix"></image>
+                <text>历史查询</text>
+            </view>
+            <view class="view_optionright">
+                <text>点击查看</text>
+                <text class="iconfont icon-31fanhui2"></text>
+            </view>
+        </view>
+    </view> -->
+    <license license="{{license}}" show="{{showLicenseComponent}}" bindchange="showLicense"></license>
+</view>

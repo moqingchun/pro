@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "license":"/components/license/index"
+    },
+    "navigationBarTitleText": "我的"
+}

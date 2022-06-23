@@ -5,7 +5,7 @@ axios.defaults.timeout = 10000
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest' //ajax请求
 axios.defaults.withCredentials = true; //cookie
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api';//如果多个域名，不建议这么用
 
 
 
@@ -116,6 +116,14 @@ export const putSpecial = (url, params = {}) => {
     })
 }
 export const exportExc = (url, params = {}, names) => {
+	// axios({//post
+	//         url,
+	//         data: QS.stringify(data, {
+	//             indices: false
+	//         }),
+	//         method: 'post',
+	//         responseType: 'blob',
+	//     })
     axios.get(url, {
         params: params,
         paramsSerializer: params => { //针对参数有数组的情况

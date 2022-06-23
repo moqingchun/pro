@@ -1,0 +1,14 @@
+<!--pages/login/index.wxml-->
+<view class="wrap">
+    <view class="login_bg">
+        <image src="/assets/images/all/login_bg.png"></image>
+    </view>
+    <view class="form_item">
+        <input type="number" placeholder="手机号" placeholder-style="color:#CCCCCC" model:value="{{phone}}"></input>
+    </view>
+    <view class="form_item">
+        <input type="number" placeholder="验证码" placeholder-style="color:#CCCCCC" model:value="{{code}}"></input>
+        <view class="get_code {{codeDis?'dis':''}}" bindtap="{{codeDis?'':'getCode'}}">{{codeTxt}}</view>
+    </view>
+    <view class="login_btn" bindtap="login">登录</view>
+</view>

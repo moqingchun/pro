@@ -1,32 +1,50 @@
 {
-  "pages": [
-    "pages/home/index",
-    "pages/about/index"
-  ],
-  "window": {
-    "navigationBarBackgroundColor": "#ff5777",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "小程序",
-    "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light",
-    "enablePullDownRefresh": false
-  },
-  "tabBar": {
-    "selectedColor": "#ff5777",
-    "list": [
-      {
-        "pagePath": "pages/home/index",
-        "text": "首页",
-        "iconPath": "assets/images/1.png",
-        "selectedIconPath": "assets/images/2.png"
-      },
-      {
-        "pagePath": "pages/about/index",
-        "text": "关于我们",
-        "iconPath": "assets/images/3.png",
-        "selectedIconPath": "assets/images/4.png"
-      }
-    ]
-  },
-  "sitemapLocation": "sitemap58.json"
+    "pages": [
+        "pages/index/index",
+        "pages/ehztclogin/index",
+        "pages/enterKunApply/index",
+        "pages/warning/index",
+        "pages/warningDetail/index",
+        "pages/my/index",
+        "pages/justfortest/index",
+        "pages/examplefortest/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "backgroundColor": "#FFFFFF",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "微信",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#333333",
+        "selectedColor": "#00C7FF",
+        "borderStyle": "white",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/assets/images/all/icon_home.png",
+                "selectedIconPath": "/assets/images/all/icon_homeactive.png"
+            },
+            {
+                "pagePath": "pages/warning/index",
+                "text": "预警",
+                "iconPath": "/assets/images/all/icon_news.png",
+                "selectedIconPath": "/assets/images/all/icon_newsactive.png"
+            },
+            {
+                "pagePath": "pages/my/index",
+                "text": "我的",
+                "iconPath": "/assets/images/all/icon_my.png",
+                "selectedIconPath": "/assets/images/all/icon_myactive.png"
+            }
+        ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "请选择“在使用小程序期间和离开小程序后”以便能正常使用本服务"
+        }
+    },
+    "requiredBackgroundModes": ["location"],
+    "sitemapLocation": "sitemap.json"
 }

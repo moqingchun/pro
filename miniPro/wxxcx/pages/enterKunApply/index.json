@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-overlay": "@vant/weapp/overlay/index",
+    "license":"/components/license/index"
+  },
+  "navigationBarTitleText": "入昆请求"
+}

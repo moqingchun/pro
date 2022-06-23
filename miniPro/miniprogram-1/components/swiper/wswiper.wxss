@@ -1,7 +1,0 @@
-/* components/swiper/wswiper.wxss */
-swiper{
-  height: 300rpx
-}
-.bannerPic{
-  width: 100%
-}

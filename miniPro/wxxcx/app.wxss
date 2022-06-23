@@ -1,0 +1,4 @@
+
+@import './assets/iconfont/iconfont.wxss'
+
+/* 这里不要写公共样式，可能会覆盖他人的子页面。可以写一个公共的wxss文件，然后在自己的子页面导入 */

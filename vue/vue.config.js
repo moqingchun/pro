@@ -1,6 +1,6 @@
 
 module.exports = {
-  // publicPath: './',//相对路径，可以任意部署。但是如果使用history模式，则不要用相对路径。
+  publicPath: '/sg/',// ./相对路径，可以任意部署。但是如果使用history模式，则不要用相对路径。
   outputDir: 'dist',
   devServer: {
     open: true, 

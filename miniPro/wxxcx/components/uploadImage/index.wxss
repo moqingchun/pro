@@ -1,0 +1,46 @@
+/* components/uploadImage/index.wxss */
+@import '/assets/iconfont/iconfont.wxss';
+
+.evl_camwrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.evl_camwrap>image,
+.evl_camera {
+  width: 186rpx;
+  height: 152rpx;
+  margin: 0 32rpx 32rpx 0;
+  position: relative;
+}
+
+.evl_camwrap>image .iconfont {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ffffff;
+  background: rgba(45, 130, 254,.9);
+  padding: 8rpx;
+  border-radius: 0 0 0 25rpx;
+  font-size: 28rpx;
+}
+
+.evl_camera {
+  box-sizing: border-box;
+  background: #F1F5FD;
+  border-radius: 2rpx;
+  border: 2rpx dashed #DCDEE0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+}
+
+.evl_camera text:nth-child(3) {
+  color: #999999;
+}
+
+.evl_camera image {
+  width: 34rpx;
+}

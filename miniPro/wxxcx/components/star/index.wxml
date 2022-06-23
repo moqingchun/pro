@@ -1,0 +1,13 @@
+<!--components/star/index.wxml-->
+<view class="star_wrap">
+    <view class="star_title">{{title}}</view>
+    <view class="star_cont">
+        <block wx:if="{{show}}">
+            <view class="iconfont icon-shoucang {{nowIndex>=index?'active':''}}" wx:for="{{5}}" wx:key="index" data-Index="{{index}}" bindtap="evaluate"></view>
+        </block>
+        <block wx:else>
+            <view class="iconfont icon-shoucang {{nowIndex>=index?'active':''}}" wx:for="{{5}}" wx:key="index"></view>
+        </block>
+    </view>
+    <view wx:if="{{show}}" class="star_res">{{nowIndex==0?'非常差':nowIndex==1?'差':nowIndex==2?'一般':nowIndex==3?'好':'非常好'}}</view>
+</view>

@@ -1,0 +1,4 @@
+<!--components/tabs/tabs.wxml-->
+<view class="home_tabs">
+    <view wx:for="{{tabLists}}" wx:key="index" class="{{nowIndex==index?'active':''}}" data-index="{{index}}" bindtap="changeTab">{{item}}</view>
+</view>

@@ -1,30 +1,326 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-	<style type="text/css">
-		body{
-			height: 100%;
-			background: #000;
-		}
-		canvas{
-			border: 1px solid #FFFEEF;
-			background-color: #0887F9;
-		}
-	</style>
-</head>
-<body>
-	<canvas id="canvasCase" width="300" height="200">
-		你的浏览器不支持 canvas，请升级你的浏览器。
-	</canvas>
-</body>
-
-<script type="text/javascript" src="jquery.js"></script>
-<script src="_lbr.js" type="text/javascript" charset="utf-8"></script>
+<template>
+  <section class="demo common-wrapper">
+    <div style="flex: 1; overflow: auto">
+      <el-table
+        :data="tableData"
+        ref="goodsDetailTable"
+        style="width: 100%"
+        height="300px"
+        size="mini"
+        border
+      >
+        <el-table-column
+          prop="updateTime"
+          label="更新时间"
+          align="center"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop="lastPrintDate"
+          label="打印时间"
+          align="center"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop="vehicleStatusTxt"
+          label="空车/重车"
+          align="center"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop="lastPrintDate"
+          label="出车时间"
+          align="center"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop="dispatchParking"
+          label="出场地点"
+          align="center"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop="dispatchStatusTxt"
+          label="运单状态"
+          align="center"
+          show-overflow-tooltip
+        >
+        </el-table-column>
+        <el-table-column
+          prop="tyCompName"
+          label="托运单位名称"
+          align="center"
+          show-overflow-tooltip
+        >
+        </el-table-column>
+        <el-table-column align="center" label="操作" width="200">
+          <template slot-scope="scope">
+            <el-link type="primary" @click="toDetail(scope.row)">查看</el-link>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="dzyd" v-show="dialogVisible">
+        <el-form :model="o">
+          <el-row>
+            <el-col :span="24">
+              <el-form-item label="派车单号：">
+                <p>{{ o.dispatchId }}</p>
+              </el-form-item>
+              <el-form-item label="业户名称：">
+                <p>{{ o.corpName }}</p>
+              </el-form-item>
+              <el-form-item label="配送方式：">
+                <p>{{ o.deliverType == "1" ? "城市配送" : "其他运输" }}</p>
+              </el-form-item>
+              <el-form-item label="出场地点：">
+                <p>{{ o.dispatchParking }}</p>
+              </el-form-item>
+              <el-form-item label="派车单状态：">
+                <p>{{ o.dispatchStatusTxt }}</p>
+              </el-form-item>
+              <el-form-item label="挂车车牌号：">
+                <p>{{ o.tractorVehNo }}</p>
+              </el-form-item>
+              <el-form-item label="托运详细地址：">
+                <p>{{ o.tyAddressDetail }}</p>
+              </el-form-item>
+              <el-form-item label="托运人地点（省）：">
+                <p>{{ o.tyCompProvince }}</p>
+              </el-form-item>
+              <el-form-item label="托运人地点（市）：">
+                <p>{{ o.tyCompCity }}</p>
+              </el-form-item>
+              <el-form-item label="托运人地点（区）：">
+                <p>{{ o.tyCompCounty }}</p>
+              </el-form-item>
+              <el-form-item label="托运人业户：">
+                <p>{{ o.tyCompName }}</p>
+              </el-form-item>
+              <el-form-item label="托运业户许可证号：">
+                <p>{{ o.tyCompLicence }}</p>
+              </el-form-item>
+              <el-form-item label="托运人联系电话：">
+                <p>{{ o.tyCompTel }}</p>
+              </el-form-item>
+              <el-form-item label="车辆类别：">
+                <p>{{ o.vehKind == "2" ? "牵引车" : "整车" }}</p>
+              </el-form-item>
+              <el-form-item label="车牌号：">
+                <p>{{ o.license }}</p>
+              </el-form-item>
+              <el-form-item label="箱位：">
+                <p>{{ o.vehBox }}</p>
+              </el-form-item>
+              <el-form-item label="罐体编号：">
+                <p>{{ o.tankNumber }}</p>
+              </el-form-item>
+              <el-form-item label="罐体容积：">
+                <p>{{ o.tankVolume }}</p>
+              </el-form-item>
+              <el-form-item label="调度人：">
+                <p>{{ o.controlPerson }}</p>
+              </el-form-item>
+              <el-form-item label="调度日期：">
+                <p>{{ o.controlDate }}</p>
+              </el-form-item>
+              <el-form-item label="驾驶员手机号：">
+                <p>{{ o.personDriverPhone }}</p>
+              </el-form-item>
+              <el-form-item label="押运员手机号：">
+                <p>{{ o.personSupercargoPhone }}</p>
+              </el-form-item>
+              <el-form-item label="第一次打印时间：">
+                <p>{{ o.firstPrintDate }}</p>
+              </el-form-item>
+              <el-form-item label="最后打印时间：">
+                <p>{{ o.lastPrintDate }}</p>
+              </el-form-item>
+              <el-form-item label="回场时间：">
+                <p>{{ o.confirmTime }}</p>
+              </el-form-item>
+              <el-form-item label="创建时间：">
+                <p>{{ o.createTime }}</p>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+        <div class="table-title">货物详情：</div>
+        <div
+          v-for="(item, index) in o.loadinggoods"
+          :key="index"
+          style="
+            border: 2px solid #e7edf7;
+            margin-bottom: 30px;
+            padding-left: 10px;
+          "
+        >
+          <div class="table-title">装货：</div>
+          <el-form :model="item">
+            <el-row>
+              <el-col :span="24">
+                <el-form-item label="派车单号：">
+                  <p>{{ item.dispatchId }}</p>
+                </el-form-item>
+                <el-form-item label="装货人地点（省 )：">
+                  <p>{{ item.province }}</p>
+                </el-form-item>
+                <el-form-item label="装货人地点（市）：">
+                  <p>{{ item.city }}</p>
+                </el-form-item>
+                <el-form-item label="装货人地点（区/县）：">
+                  <p>{{ item.county }}</p>
+                </el-form-item>
+                <el-form-item label="详细地址：">
+                  <p>{{ item.goodsArea }}</p>
+                </el-form-item>
+                <el-form-item label="经度：">
+                  <p>{{ item.wgsLog }}</p>
+                </el-form-item>
+                <el-form-item label="纬度：">
+                  <p>{{ item.wgsLat }}</p>
+                </el-form-item>
+                <el-form-item label="危险等级：">
+                  <p>
+                    {{
+                      item.goodsGradeId == "1"
+                        ? "三类高危"
+                        : item.goodsGradeId == "2"
+                        ? "高危"
+                        : item.goodsGradeId == "3"
+                        ? "普危"
+                        : ""
+                    }}
+                  </p>
+                </el-form-item>
+                <el-form-item label="物品名：">
+                  <p>{{ item.goodsName }}</p>
+                </el-form-item>
+                <el-form-item label="货重：">
+                  <p>{{ item.goodsWeight }}</p>
+                </el-form-item>
+                <el-form-item label="装货人业户：">
+                  <p>{{ item.shipperComp }}</p>
+                </el-form-item>
+                <el-form-item label="装货人业户许可证号：">
+                  <p>{{ item.shipperCompLicence }}</p>
+                </el-form-item>
+                <el-form-item label="装货人联系电话：">
+                  <p>{{ item.shipperCompTel }}</p>
+                </el-form-item>
+                <el-form-item label="联合国编号：">
+                  <p>{{ item.unId }}</p>
+                </el-form-item>
+                <el-form-item label="货物单位：">
+                  <p>{{ item.unit }}</p>
+                </el-form-item>
+                <el-form-item label="包装类型：">
+                  <p>{{ item.packingType }}</p>
+                </el-form-item>
+                <el-form-item label="包装规格：">
+                  <p>{{ item.packingSpec }}</p>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+          <div v-for="(v, i) in item.unLoadinggoods" :key="i">
+            <div class="table-title">卸货：</div>
+            <el-form :model="v">
+              <el-row>
+                <el-col :span="24">
+                  <el-form-item label="派车单号：">
+                    <p>{{ v.dispatchId }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货地点（省 )：">
+                    <p>{{ v.province }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货地点（市）：">
+                    <p>{{ v.city }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货地点（区/县）：">
+                    <p>{{ v.county }}</p>
+                  </el-form-item>
+                  <el-form-item label="详细地址：">
+                    <p>{{ v.goodsArea }}</p>
+                  </el-form-item>
+                  <el-form-item label="经度：">
+                    <p>{{ v.wgsLog }}</p>
+                  </el-form-item>
+                  <el-form-item label="纬度：">
+                    <p>{{ v.wgsLat }}</p>
+                  </el-form-item>
+                  <el-form-item label="物品名：">
+                    <p>{{ v.goodsName }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货货重 ：">
+                    <p>{{ v.goodsWeight }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货人业户：">
+                    <p>{{ v.shipperComp }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货人业户许可证号：">
+                    <p>{{ v.shipperCompLicence }}</p>
+                  </el-form-item>
+                  <el-form-item label="卸货人联系电话：">
+                    <p>{{ v.shipperCompTel }}</p>
+                  </el-form-item>
+                  <el-form-item label="联合国编号：">
+                    <p>{{ v.unId }}</p>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 <script>
-	var ctx = document.getElementById('canvasCase').getContext('2d')
-	ctx.fillStyle = '#000000'
-	ctx.fillRect(0,0,30,30)
+import { new_waybill_det } from "@/apis/httpCase";
+export default {
+  data() {
+    return {
+      tableData: [],
+      dialogVisible: false,
+      o: {},
+    };
+  },
+  mounted() {
+    this.searchTableData();
+  },
+  deactivated() {
+    this.o = {};
+    this.dialogVisible = false;
+  },
+  methods: {
+    toDetail(row) {
+      this.o = row;
+      this.dialogVisible = true;
+    },
+    searchTableData(type) {
+      this.$loading2();
+      this.toOne(type);
+      new_waybill_det({
+        q_dispatchId: this.$route.query.a,
+      })
+        .then((resp) => {
+          this.tableData = resp.data;
+          this.$loading2.close();
+        })
+        .catch((error) => {
+          console.error(error);
+          this.$loading2.close();
+        });
+    },
+    tableRowClassName({ row, rowIndex }) {
+      if (rowIndex % 2 !== 0) {
+        return "warning-row";
+      } else {
+        return "success-row";
+      }
+    },
+  },
+};
 </script>
-</html>
+<style lang="scss">
+</style>

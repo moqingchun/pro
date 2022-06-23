@@ -506,7 +506,7 @@
 			}, 1000);
 		},
 		//格式化日期
-		timeFormate: timeFormate: function (datetime, formatStr) {
+		timeFormate:function (datetime, formatStr) {
             var dat = datetime;
             var str = formatStr;
             var Week = ['日', '一', '二', '三', '四', '五', '六'];

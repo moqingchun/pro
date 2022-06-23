@@ -1,0 +1,23 @@
+/* pages/warning/index.wxss */
+.wrap {
+    padding: 32rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.v_block {
+    box-shadow: 0rpx 4px 20rpx 0rpx rgba(183, 183, 183, 0.35);
+    border-radius: 16rpx;
+    padding: 32rpx;
+    margin-bottom: 16rpx;
+}
+
+.v_date {
+    padding-bottom: 32rpx;
+    color: #2D82FE;
+}
+.v_tips{
+    padding-top: 32rpx;
+    text-align: center;
+    color: #cccccc;
+}

@@ -1,0 +1,7 @@
+<!--pages/examplefortest/index.wxml-->
+<view>
+    <view bindtap="getLicense">
+        车牌号：{{license}}
+    </view>
+    <license license="{{license}}" show="{{show}}" bindchange="showLicense"></license>
+</view>

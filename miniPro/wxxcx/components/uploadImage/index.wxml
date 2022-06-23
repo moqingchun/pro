@@ -1,0 +1,11 @@
+<!--components/uploadImage/index.wxml-->
+<view class="evl_camwrap">
+  <image wx:for="{{imgList}}" wx:key="index" src="{{item}}" data-index="{{index}}" data-src="{{imgList}}" bindtap="bigImageFn">
+    <text class="iconfont icon-cha" data-ind="{{index}}" catchtap="deleteImg"></text>
+  </image>
+  <view class="evl_camera" bindtap="chooseImageFn">
+    <image src="/assets/images/rideGuide/camera.png" mode="widthFix"></image>
+    <text>上传照片</text>
+    <text>(最多3张)</text>
+  </view>
+</view>

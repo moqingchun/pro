@@ -10,7 +10,7 @@ Vue.use(Router)
 
 export default new Router({
     mode: 'history',
-    base: process.env.BASE_URL,
+    base: 'sg',
     routes: [{
         path: '/',
         name: '登录',

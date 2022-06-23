@@ -1,0 +1,127 @@
+@font-face {
+    font-family: "iconfont"; /* Project id 3383702 */
+    src: url('//at.alicdn.com/t/font_3383702_urm7tc8fo6d.woff2?t=1653380546150') format('woff2'),
+         url('//at.alicdn.com/t/font_3383702_urm7tc8fo6d.woff?t=1653380546150') format('woff'),
+         url('//at.alicdn.com/t/font_3383702_urm7tc8fo6d.ttf?t=1653380546150') format('truetype');
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-31fanhui2:before {
+    content: "\e601";
+  }
+  
+  .icon-duigouxiao:before {
+    content: "\e8bd";
+  }
+  
+  .icon-alarm:before {
+    content: "\e604";
+  }
+  
+  .icon-renweizhi:before {
+    content: "\e600";
+  }
+  
+  .icon-hangshizhong1:before {
+    content: "\e669";
+  }
+  
+  .icon-Tab_bar_icon_wode_default:before {
+    content: "\e61f";
+  }
+  
+  .icon-Tab_bar_icon_home_default:before {
+    content: "\e620";
+  }
+  
+  .icon-Tab_bar_icon_yuijng_default:before {
+    content: "\e621";
+  }
+  
+  .icon-a-bianzu11:before {
+    content: "\e622";
+  }
+  
+  .icon-Tab_bar_icon_home_selected:before {
+    content: "\e623";
+  }
+  
+  .icon-Tab_bar_icon_wode_selected:before {
+    content: "\e624";
+  }
+  
+  .icon-Tab_bar_icon_yuijng_selected:before {
+    content: "\e625";
+  }
+  
+  .icon-xuanxiangkuang-weixuanzhong:before {
+    content: "\e626";
+  }
+  
+  .icon-xuanxiangkuang-xuanzhong:before {
+    content: "\e628";
+  }
+  
+  .icon-jinru1:before {
+    content: "\e629";
+  }
+  
+  .icon-liqu:before {
+    content: "\e62a";
+  }
+  
+  .icon-a-bianzu13:before {
+    content: "\e62b";
+  }
+  
+  .icon-a-bianzu12:before {
+    content: "\e62d";
+  }
+  
+  .icon-a-bianzu13beifen:before {
+    content: "\e62e";
+  }
+  
+  .icon-bianzu:before {
+    content: "\e62f";
+  }
+  
+  .icon-huangse:before {
+    content: "\e630";
+  }
+  
+  .icon-lanse:before {
+    content: "\e631";
+  }
+  
+  .icon-huise:before {
+    content: "\e632";
+  }
+  
+  .icon-chepai01:before {
+    content: "\e627";
+  }
+  
+  .icon-chepaihao:before {
+    content: "\e659";
+  }
+  
+  .icon-qiehuan:before {
+    content: "\e6a6";
+  }
+  
+  .icon-shouye:before {
+    content: "\e614";
+  }
+  
+  .icon-jinru:before {
+    content: "\e62c";
+  }
+  

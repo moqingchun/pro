@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="web-map/css/styleJ.css"/>
+
+    <script type="text/javascript" src="web-map/js/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/i18n/defaults-zh_CN.min.js"></script>-->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=1a4b8c7833abe44c524111a13d124daf&plugin=AMap.DragRoute,AMap.Driving,AMap.Geocoder,AMap.ToolBar,AMap.Autocomplete,AMap.PlaceSearch"></script>
+    <script type="text/javascript" src="web-map/js/public.js"></script>
+    <script type="text/javascript" src="web-map/js/linePlan.js"></script>
+    <style>
+        .search_marker_box{
+            position: relative;
+        }
+        .search_marker_box .close_btn{
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            display: none;
+        }
+        .setType{
+            position: absolute;
+            top: 12px;
+            left:28px;
+            display: none;
+            width: 112px;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 0 4px 4px #eee;
+        }
+        .setType p{
+            margin: 0 0 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="lineplan-box">
+    <div class="keyword_box">
+        地址搜索：<input type="text" id="keyword" name="keyword" value="请输入关键字" onfocus='this.value=""'/>
+    </div>
+    <div id="container"></div>
+    <div class="spread-box"><i class="glyphicon glyphicon-menu-left"></i></div>
+    <div class="spread-box1"><span>路线详情</span><i class="glyphicon glyphicon-menu-right"></i></div>
+    <div class="data-box">
+        <div class="remake-shouqi"><span>路线详情</span><i class="glyphicon glyphicon-menu-right"></i></div>
+        <div id="dataBox">
+
+        </div>
+    </div>
+    <div class="lineset-modal">
+        <div class="modal-top">
+            <span>配置路线</span>
+            <i id="showSmall" class="glyphicon glyphicon-menu-right"></i>
+        </div>
+
+        <form id="lineForm">
+            <div class="form-group">
+                <label><span class="star">*</span>起点</label>
+                <div class="flex">
+                    <div class="inputSel" id="start_name"></div>
+                    <button type="button" at="0" class="mapPoint">地图标点</button>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>途经点1</label>
+                    <div class="flex">
+                        <div class="inputSel" id="wayP1"></div>
+                        <button type="button" at="2" class="mapPoint">地图标点</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>途经点2</label>
+                    <div class="flex">
+                        <div class="inputSel" id="wayP2"></div>
+                        <button type="button" at="3" class="mapPoint">地图标点</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>途经点3</label>
+                    <div class="flex">
+                        <div class="inputSel" id="wayP3"></div>
+                        <button type="button" at="4" class="mapPoint">地图标点</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><span class="star">*</span>终点</label>
+                <div class="flex">
+                    <div class="inputSel" id="end_name"></div>
+                    <button type="button" at="1" class="mapPoint">地图标点</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                总里程 <span id="distance">0</span> 公里
+            </div>
+            <div class="form-group">
+                <label><span class="star">*</span>路线名称</label>
+                <input type="text" class="form-control" id="lineName" placeholder="路线名称" maxlength="20" onkeyup="this.value = this.value.trim()">
+            </div>
+            <button type="button" class="btn btn-default" id="saveLine">保存</button>
+            <button type="button" class="btn btn-default" onclick="history.go(-1)">返回</button>
+        </form>
+    </div>
+</div>
+</body>
+
+
+</html>

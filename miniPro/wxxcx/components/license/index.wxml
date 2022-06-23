@@ -1,0 +1,39 @@
+<!--components/license/index.wxml-->
+<van-popup wx:if="{{show}}" show="{{ show }}" round position="bottom" custom-style="height: 80%" bind:close="onClose">
+    <view class="wrap">
+        <view class="codes_wrap">
+            <view class="c_flag">
+                <view>{{carNums[0]}}</view>
+                <view>{{carNums[1]}}</view>
+            </view>
+            <view class="c_dot">·</view>
+            <view class="c_body">
+                <view>{{carNums[2]}}</view>
+                <view>{{carNums[3]}}</view>
+                <view>{{carNums[4]}}</view>
+                <view>{{carNums[5]}}</view>
+                <view>{{carNums[6]}}</view>
+                <view wx:if="{{newPower}}">{{carNums[7]}}</view>
+            </view>
+            <view class="c_newpower" bindtap="newPowerF">{{newPower?'非新能源':'新能源'}}</view>
+        </view>
+        <view class="kb_title">
+            <view bindtap="delBack">清除</view>
+            <view bindtap="complete">完成</view>
+        </view>
+        <view class="kb_container">
+            <view class="kb_body" wx:if="{{boardType==0}}">
+                <view wx:for="{{provinces}}" wx:key="index" data-val="{{item}}" bindtap="chooseCode">{{item}}</view>
+            </view>
+            <view class="kb_body" wx:if="{{boardType==1}}">
+                <view wx:for="{{areas}}" wx:key="index" data-val="{{item}}" bindtap="chooseCode">{{item}}</view>
+            </view>
+            <view class="kb_body" wx:if="{{boardType==2}}">
+                <view wx:for="{{numbers}}" wx:key="index" data-val="{{item}}" bindtap="chooseCode">{{item}}</view>
+            </view>
+            <view class="kb_body" wx:if="{{boardType==3}}">
+                <view wx:for="{{last}}" wx:key="index" data-val="{{item}}" bindtap="chooseCode">{{item}}</view>
+            </view>
+        </view>
+    </view>
+</van-popup>

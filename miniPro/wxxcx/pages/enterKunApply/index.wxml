@@ -1,0 +1,141 @@
+<!--pages/enterKunApply/index.wxml-->
+<view class="wrap">
+    <view class="view_form">
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">到达企业</view>
+            <input placeholder="请输入企业名称" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{arriveCorp}}"></input>
+        </view>
+        <view class="form_item">
+            <view class="labe">企业所属区镇</view>
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker">
+                    <view wx:if="{{array[index]}}">{{array[index]}}</view>
+                    <view class="picker_placeholder" wx:else>请选择</view>
+                    <view class="iconfont icon-31fanhui2"></view>
+                </view>
+            </picker>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">企业联系人</view>
+            <input placeholder="请输入企业联系人" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{corpLinkMan}}"></input>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">企业联系人手机</view>
+            <input type="number" placeholder="请输入企业联系人手机号" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{corpLinkManTel}}"></input>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">车牌号</view>
+            <!-- <input placeholder="例如：苏U12345" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{license}}"></input> -->
+            <view class="item_license" bindtap="getLicense">
+                <view wx:if="{{!license}}" class="item_placehold">请填写车牌号</view>
+                <view wx:else class="license_txt">{{license}}</view>
+            </view>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">车牌颜色</view>
+            <picker bindchange="bindCpysPickerChange" value="{{licenseColorIndex}}" range="{{licenseColorArray}}">
+                <view class="picker">
+                    <view>{{licenseColorArray[licenseColorIndex]}}</view>
+                    <view class="iconfont icon-31fanhui2"></view>
+                </view>
+            </picker>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">入昆道口</view>
+            <picker bindchange="bindDkPickerChange" value="{{dkIndex}}" range="{{dkArray}}" range-key="name">
+                <view class="picker">
+                    <view wx:if="{{dkArray[dkIndex].name}}">{{dkArray[dkIndex].name}}</view>
+                    <view class="picker_placeholder" wx:else>请选择</view>
+                    <view class="iconfont icon-31fanhui2"></view>
+                </view>
+            </picker>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">入昆日期</view>
+            <picker mode="date" value="{{arrivalDate}}" start="{{startRange}}" bindchange="bindArrivalDateChange">
+                <view class="picker">
+                    <view wx:if="{{arrivalDate}}">{{arrivalDate}}</view>
+                    <view class="picker_placeholder" wx:else>请选择</view>
+                    <view class="iconfont icon-31fanhui2"></view>
+                </view>
+            </picker>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">离昆日期</view>
+            <picker mode="date" value="{{leaveDate}}" start="{{startRange}}" bindchange="bindleaveDateChange">
+                <view class="picker">
+                    <view wx:if="{{leaveDate}}">{{leaveDate}}</view>
+                    <view class="picker_placeholder" wx:else>请选择</view>
+                    <view class="iconfont icon-31fanhui2"></view>
+                </view>
+            </picker>
+        </view>
+        <view class="form_item">
+            <view class="labe">驾驶员姓名</view>
+            <input placeholder="请输入姓名" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{driverName}}"></input>
+        </view>
+        <view class="form_item">
+            <text class="star">*</text>
+            <view class="labe">驾驶员手机</view>
+            <input type="number" placeholder="请输入驾驶员手机号" placeholder-style="color:#CCCCCC;font-size:28rpx" model:value="{{driverTel}}"></input>
+        </view>
+    </view>
+    <view class="view_check" wx:if="{{!haveInfo}}">
+        <checkbox color="#00C7FF" checked="{{checked}}" bindtap="cbFn" />
+        <text>我已同意</text>
+        <text class="t_book">授权指引</text>
+    </view>
+    <view wx:if="{{!haveInfo}}" class="view_btn">
+        <view bindtap="sameData">同步苏货码数据</view>
+        <view bindtap="submitFn">确认提交</view>
+    </view>
+    <view wx:else class="view_ok" bindtap="backFn">已提交，返回</view>
+    <license license="{{license}}" show="{{showLicenseComponent}}" bindchange="showLicense"></license>
+    <van-overlay z-index="99" show="{{ show }}">
+        <view class="pop_wrap">
+            <view class="pop_title">鹿货通小程序授权指引</view>
+            <view class="pop_body">
+                <view>为了注册、登录小程序，小程序将在获取你的明示同意后，收集你的微信昵称、头像。</view>
+                <view>为了提供所属城市定位、道口查询服务功能等，小程序将在获取你的明示同意后，收集你的位置信息。</view>
+                <view>为了方便用户保存图片，小程序将在获取你的明示同意后，使用你的相册（仅写入)权限。</view>
+                <view>为了业务事项办理、进度通知，方便业务受理单位与你取得联系，小程序将在获取你的明示同意后，收集你的手机号。</view>
+                <view>小程序收集你的地址，用于业务事项办理、审核等。</view>
+            </view>
+            <view class="pop_footer">
+                <view bindtap="backFn">不同意</view>
+                <view class="{{sureTxt=='同意'?'':'dis'}}" bindtap="{{sureTxt=='同意'?'sureFn':''}}">{{sureTxt}}</view>
+            </view>
+        </view>
+    </van-overlay>
+    <van-overlay z-index="99" show="{{ haveSubmit }}">
+        <view class="pop_wrap">
+            <view class="pop_titlec">温馨提示</view>
+            <view class="pop_body">
+                <view>你的请求已提交。</view>
+            </view>
+            <view class="pop_footerc">
+                <view bindtap="确定" bindtap="haveSubmited">确定</view>
+            </view>
+        </view>
+    </van-overlay>
+    <van-overlay z-index="99" show="{{ changeNotice }}">
+        <view class="pop_wrap">
+            <view class="pop_titlec">温馨提示</view>
+            <view class="pop_body">
+                <view>您的车牌号或车牌颜色有变动，是否更新为我的常驾车辆？</view>
+            </view>
+            <view class="pop_footer">
+                <view bindtap="cancelChange">取消</view>
+                <view bindtap="sureChange">确定</view>
+            </view>
+        </view>
+    </van-overlay>
+</view>

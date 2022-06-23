@@ -1,4 +1,0 @@
-
-<button bindtap="add">增加</button>
-
-<slot name="woqu"/>

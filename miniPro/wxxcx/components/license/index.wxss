@@ -1,0 +1,87 @@
+/* components/license/index.wxss */
+.wrap {
+    padding: 48rpx 48rpx 0;
+    color: #333333;
+    font-size: 32rpx;
+}
+
+.codes_wrap {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.c_flag {
+    display: flex;
+    height: 72rpx;
+    border-radius: 8px;
+    border: 2rpx solid #CCCCCC;
+    padding: 12rpx 0;
+    box-sizing: border-box;
+}
+
+.c_flag>view {
+    width: 44rpx;
+    text-align: center;
+}
+
+.c_flag>view:nth-child(1) {
+    border-right: 2rpx solid #CCCCCC;
+}
+
+.c_dot {
+    margin: 0 6rpx;
+    color: #CCCCCC;
+}
+
+.c_body {
+    display: flex;
+}
+
+.c_body>view {
+    width: 44rpx;
+    height: 72rpx;
+    line-height: 68rpx;
+    text-align: center;
+    border-radius: 8px;
+    border: 2rpx solid #CCCCCC;
+    box-sizing: border-box;
+    margin-right: 6rpx;
+}
+
+.c_newpower {
+    padding: 10rpx 20rpx;
+    border: 2rpx dotted #00C7FF;
+    color: #00C7FF;
+    font-size: 24rpx;
+    border-radius: 8rpx;
+    margin-left: 40rpx;
+}
+
+.kb_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 64rpx 0 32rpx;
+    color: #999999;
+    font-weight: bold;
+}
+
+.kb_title view:nth-child(2) {
+    color: #00C7FF;
+}
+
+.kb_body {
+    padding: 0 0 22rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.kb_body>view {
+    width: 64rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    background: #F2F2F2;
+    border-radius: 8rpx;
+    margin: 0 15rpx 28rpx;
+}

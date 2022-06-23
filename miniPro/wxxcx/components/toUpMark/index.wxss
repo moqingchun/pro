@@ -1,0 +1,50 @@
+/* components/toUpMark/toUpMark.wxss */
+@import '/assets/iconfont/iconfont.wxss';
+@keyframes toUpper{
+    from{
+        bottom:-150rpx;
+    }
+    to{
+        bottom: 0;
+    }
+}
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.toupmark_wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(0,0,0,.4);
+    animation: fadeIn .2s forwards;
+}
+.toupmark{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 40rpx 40rpx 0 0;
+    box-shadow: 0 -4rpx 20rpx 0 rgba(183, 183, 183, 0.35);
+    background: #ffffff;
+    animation: toUpper .2s forwards;
+}
+.title{
+    padding: 0 34rpx;
+    line-height: 120rpx;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: bold;
+    border-bottom: 1px solid #EBEDF0;
+}
+.title text:nth-child(2){
+    float: right;
+    font-size: 22rpx;
+}

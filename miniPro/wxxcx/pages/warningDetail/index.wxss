@@ -1,0 +1,26 @@
+/* pages/warningDetail/index.wxss */
+.wrap {
+    padding: 32rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.v_block {
+    box-shadow: 0rpx 4px 20rpx 0rpx rgba(183, 183, 183, 0.35);
+    border-radius: 16rpx;
+    padding: 32rpx;
+}
+
+.v_block>view+view{
+    padding-top: 16rpx;
+}
+.v_block .v_btnwrap{
+    padding-top: 40rpx;
+}
+.v_button{
+    width: fit-content;
+    padding: 6rpx 16rpx;
+    color: #ffffff;
+    background: #2D82FE;
+    border-radius: 10rpx;
+}

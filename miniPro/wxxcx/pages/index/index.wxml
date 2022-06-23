@@ -1,0 +1,13 @@
+<!--pages/index/index.wxml-->
+<view class="wrap">
+    <image class="home_bg" src="/assets/images/all/home_bg.png"></image>
+    <view class="home_title">鹿货通</view>
+    <view class="home_block" bindtap="linkEnterKun">
+        <view class="v_enter">
+            <image src="/assets/images/all/home_enter.png" mode="widthFix"></image>
+            <text>进入</text>
+        </view>
+        <view class="v_text">入昆请求</view>
+        <view wx:if="{{!!haveInfo}}" class="v_btn">已提交</view>
+    </view>
+</view>
